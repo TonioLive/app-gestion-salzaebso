@@ -1,0 +1,207 @@
+body {
+        width: 200mm;
+        background-color: #FFFFFF;
+        margin-left: auto;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-bottom: 10px;
+        font-family: 'Ovo', serif;
+        font-size: small;
+        color: #1c4a79;
+        border-collapse: collapse;
+        max-width: 200mm;
+}
+a:link {
+        color: 9b3b8f;
+        text-decoration: none;
+}
+a:visited {
+        color: 9b3b8f;
+        text-decoration: none;
+}
+a:hover {
+        color: #000000;
+        text-decoration: none;
+}
+a:active {
+        color: #000000;
+        text-decoration: none;
+}
+.page
+	{
+		width: 100%;
+		max-width: 1024px;
+		margin: auto;
+		background-color: #FFFFFF;
+		border-top: 1px solid #DDD;
+		border-left: 1px solid #DDD;	
+		border-bottom: 1px solid #DDD;
+		border-right: 1px solid #DDD;
+	}
+.page80
+	{
+		width: 80%;
+		max-width: 1024px;
+		margin: auto;
+		background-color: #FFFFFF;
+		border-top: 1px solid #DDD;
+		border-left: 1px solid #DDD;	
+		border-bottom: 1px solid #DDD;
+		border-right: 1px solid #DDD;
+	}
+.texto_encabezado {
+        font-size: 24px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        color: #1c4a79;
+}
+.subtitulo_encabezado {
+        font-size: 20px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        color: #1c4a79;
+}
+.encabezado_horario {
+		background-color: #e76a2a;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+}
+.filas_horario {
+		background-color: #fee9db;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_comidas_encabezado {
+		background-color: #749149;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_comidas {
+		background-color: #99ba6a;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_almuerzo {
+		background-color: #c1d5a1;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_comida {
+		background-color: #d5e3c1;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_merienda {
+		background-color: #eaf1e1;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_pie_comida {
+		background-color: #c1d5a1;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: left;
+        color: #000000;
+}
+.tabla_higiene_encabezado {
+		background-color: #336096;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_higiene {
+		background-color: #93b4d4;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_higiene_filas {
+		background-color: #b7cce2;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_pie_higiene {
+		background-color: #93b4d5;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: left;
+        color: #000000;
+}
+.tabla_notas {
+		background-color: #b3a2c5;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_notas_filas {
+		background-color: #e5dfec;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #000000;
+}
+.tabla_actividades_encabezado {
+		background-color: #dc9495;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_actividades {
+		background-color: #dc9495;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: center;
+        color: #ffffff;
+}
+.tabla_actividades_filas {
+		background-color: #f3dbdc;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: left;
+        color: #000000;
+}
+.tabla_pie_actividades {
+		background-color: #dc9495;
+        font-size: 12px;
+        font-family: 'Ovo', serif;
+        font-weight: normal;
+        text-align: left;
+        color: #000000;
+}

@@ -1,0 +1,16 @@
+<?php
+require_once dirname(__DIR__).'/configuracion/family.php';
+header('Content-Type: text/html; charset=UTF-8');
+$pool=APP_SITE==='neokids';$brand=$pool?'Neo Kids':'ZEIM';
+?>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="<?php echo $pool?'#075985':'#174b41'; ?>"><meta name="robots" content="noindex,nofollow"><title>Familias · <?php echo $brand; ?></title><link rel="stylesheet" href="/app/assets/familias-login.css?v=20260923"><link rel="stylesheet" href="/app/assets/brand.css?v=20260923"><script src="/app/assets/familias-login.js?v=20260923" defer></script></head>
+<body class="familias-login <?php echo $pool?'family-pool':'family-zeim'; ?>"><main class="familias-login__page">
+<section class="familias-login__welcome"><div class="familias-login__brand"><span class="family-symbol" aria-hidden="true"><?php echo $pool?'≈':'Z'; ?></span><div><span><?php echo $pool?'Escuela de natación':'Escuelas municipales · Zaebsal'; ?></span><strong><?php echo $brand; ?></strong></div></div>
+<div class="familias-login__welcome-copy"><span class="familias-login__eyebrow">Área de familias</span><h1><?php echo $pool?'Su próxima aventura,<br>en el agua.':'Su día a día,<br>siempre contigo.'; ?></h1><p><?php echo $pool?'Horarios, mensajes, avisos y facturación. Tu piscina, más cerca.':'La agenda, los mensajes y toda la información de tu escuela, desde cualquier lugar.'; ?></p></div>
+<div class="familias-login__features"><?php foreach ($pool?array('Horarios','Mensajes','Avisos','Facturación'):array('Agenda','Menús','Mensajes','Recibos') as $item) echo '<span>'.$item.'</span>'; ?></div></section>
+<section class="familias-login__card"><div class="familias-login__mobile-brand"><span class="family-symbol"><?php echo $pool?'≈':'Z'; ?></span><strong><?php echo $brand; ?></strong></div><header class="familias-login__card-header"><span class="familias-login__eyebrow">Bienvenida/o</span><h2>Tu espacio familiar</h2><p>Entra con los datos que te ha facilitado el centro.</p></header>
+<?php if (!empty($_SESSION['family_error'])) { ?><div class="familias-login__alert" role="alert"><?php echo app_escape($_SESSION['family_error']);unset($_SESSION['family_error']); ?></div><?php } ?>
+<form method="post" action="/app/acceso.php" class="familias-login__form"><input type="hidden" name="_csrf" value="<?php echo app_csrf_token(); ?>">
+<label class="familias-login__field" for="user"><span>Usuario</span><span class="familias-login__control"><input id="user" name="user" required maxlength="100" autocomplete="username" autocapitalize="none" spellcheck="false"></span></label>
+<label class="familias-login__field" for="pass"><span>Contraseña</span><span class="familias-login__control"><input id="pass" name="pass" type="password" required maxlength="1024" autocomplete="current-password"></span></label>
+<button type="submit" class="familias-login__submit">Entrar</button><p>Si necesitas ayuda con el acceso, contacta con la administración del centro.</p></form></section></main></body></html>

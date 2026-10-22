@@ -1,0 +1,7 @@
+<?php
+// Copy to .private/api-auth.php. Use a different random key in each environment.
+$key = getenv('ZEIM_API_AUTH_KEY');
+if (!is_string($key) || strlen($key) < 32) {
+    throw new RuntimeException('ZEIM_API_AUTH_KEY must contain at least 32 random characters.');
+}
+return ['key' => $key];

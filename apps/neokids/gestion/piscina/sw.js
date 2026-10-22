@@ -1,0 +1,3 @@
+'use strict';
+self.addEventListener('push',function(event){let data={};try{data=event.data.json();}catch(e){}event.waitUntil(self.registration.showNotification(data.title||'Neo Kids · Estado de piscina',{body:data.body||'Hay una incidencia que revisar.',icon:'/app/assets/icon-192.png',tag:data.tag||'pool-equipment',data:{url:'/gestion/piscina/estado.php'}}));});
+self.addEventListener('notificationclick',function(event){event.notification.close();const target=new URL('/gestion/piscina/estado.php',self.location.origin).href;event.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(async function(windows){for(const client of windows)if(client.url===target){return client.focus();}return clients.openWindow(target);}));});

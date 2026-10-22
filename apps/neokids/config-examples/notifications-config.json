@@ -1,0 +1,10 @@
+{
+  "subject": "mailto:admin@example.invalid",
+  "publicKey": "REPLACE_WITH_GENERATED_PUBLIC_KEY",
+  "privateKey": "REPLACE_WITH_GENERATED_PRIVATE_KEY",
+  "php": "php",
+  "phpArgs": [
+    "-c",
+    "/absolute/path/to/cli.ini"
+  ]
+}

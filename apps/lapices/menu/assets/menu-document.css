@@ -1,0 +1,120 @@
+.menu-print {
+    margin: 0;
+    padding: 16px;
+    background: #f2f6f4;
+    color: #17322e;
+    font-family: Arial, sans-serif;
+}
+.menu-print *, .menu-page * { box-sizing: border-box; }
+.menu-print-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    max-width: 1400px;
+    margin: 0 auto 16px;
+}
+.menu-print-toolbar button, .menu-page a.menu-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid #21675a;
+    border-radius: 9px;
+    background: #21675a;
+    color: #fff;
+    font: 700 14px Arial, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+.menu-print-toolbar p { margin: 0; font-size: 13px; }
+.menu-document-scroll {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+.menu-document {
+    width: 100%;
+    min-width: 900px;
+    padding: 12px;
+    background: #fff;
+}
+.menu-document-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0 0 8px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #21675a;
+    color: #174b41;
+    text-align: left;
+}
+.menu-document-heading strong { font-size: 18px; }
+.menu-document-heading span { font-size: 12px; }
+.menu-document-frame, .menu-calendar { width: 100%; border-collapse: collapse; }
+.menu-calendar { table-layout: fixed; margin-top: 10px; }
+.menu-calendar > thead > tr > td, .menu-calendar > tbody > tr > td {
+    width: calc(100% / 7);
+    padding: 4px;
+    border: 1px solid #aebbb7;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+.menu-calendar > thead > tr > td { background: #21675a; color: #fff; }
+.menu-calendar table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.menu-calendar table td { padding: 2px; }
+.menu-calendar font { font-family: inherit; }
+.menu-calendar font[size="1"] { font-size: 11px; }
+.menu-calendar font[size="2"] { font-size: 12px; }
+.menu-allergens { text-align: left; font-size: 11px; line-height: 1.5; margin-top: 10px; }
+.menu-allergens h3 { display: inline; font-size: inherit; margin: 0 8px 0 0; }
+.menu-allergens span { display: inline-block; margin-right: 10px; }
+.menu-allergens br { display: none; }
+
+.menu-page-shell { max-width: 1440px; margin: 12px auto; background: #fff; }
+.menu-page { max-width: 1040px; min-width: 0; margin: auto; padding: clamp(14px, 3vw, 32px); text-align: left; }
+.menu-page h1 { margin: 0 0 8px; font-size: clamp(23px, 4vw, 32px); line-height: 1.2; }
+.menu-page-intro { margin: 0 0 24px; color: #60736f; }
+.menu-page .menu-document-heading { flex-wrap: wrap; margin-bottom: 20px; }
+.menu-type-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.menu-type-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 16px; border: 1px solid #d9e3e0; border-radius: 12px; }
+.menu-type-name { min-width: 0; overflow-wrap: anywhere; font-size: 15px; }
+.menu-type-list .menu-action { flex-shrink: 0; }
+.menu-month-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 24px; }
+.menu-page .menu-month-nav .menu-action { color: #174b41; background: #f2f6f4; }
+@media (max-width: 600px) {
+    .menu-print { padding: 10px; }
+    .menu-page-shell { margin: 0; }
+    .menu-type-list li { align-items: stretch; flex-direction: column; gap: 10px; }
+    .menu-month-nav .menu-action { flex: 1 1 140px; }
+}
+@media print {
+    @page { size: A4 landscape; margin: 7mm; }
+    html, .menu-print { width: auto; min-width: 0; margin: 0; padding: 0; background: #fff; }
+    .menu-print-toolbar { display: none !important; }
+    .menu-document-scroll { width: 100%; max-width: none; overflow: visible; }
+    .menu-document { width: 100%; min-width: 0; padding: 0; }
+    .menu-document-heading { padding-bottom: 2mm; margin-bottom: 2mm; border-bottom-width: 1px; }
+    .menu-document-heading strong { font-size: 12pt; }
+    .menu-document-heading span { font-size: 9pt; }
+    .menu-calendar { margin-top: 2mm; }
+    .menu-calendar > tbody > tr { break-inside: avoid; page-break-inside: avoid; }
+    .menu-calendar > thead { display: table-header-group; }
+    .menu-calendar td { padding: .4mm !important; font-size: 7pt; line-height: 1.1; }
+    .menu-calendar table td { padding: .15mm 0 !important; }
+    .menu-calendar > thead > tr > td { background: #eee; color: #000; }
+    .menu-calendar > thead font { color: #000; }
+    .menu-calendar font[size="1"] { font-size: 7pt; }
+    .menu-calendar font[size="2"] { font-size: 8pt; }
+    .menu-document font[size="3"] { font-size: 10pt; }
+    .menu-allergens { font-size: 7pt; margin-top: 2mm; break-inside: avoid; }
+    .menu-allergens span { margin-right: 3mm; }
+    .menu-page-shell { margin: 0; }
+    .menu-page-shell > .legacy-admin-header, .menu-page .menu-action, .menu-month-nav { display: none !important; }
+    .menu-page { max-width: none; padding: 0; }
+    .menu-type-list li { break-inside: avoid; }
+}

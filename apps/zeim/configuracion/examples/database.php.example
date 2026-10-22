@@ -1,0 +1,14 @@
+<?php
+// Copy to .private/database.php. Keep credentials in the server environment.
+$values = [
+    'sql_host' => getenv('ZEIM_DB_HOST'),
+    'sql_usuario' => getenv('ZEIM_DB_USER'),
+    'sql_pass' => getenv('ZEIM_DB_PASSWORD'),
+    'sql_db' => getenv('ZEIM_DB_NAME'),
+];
+foreach ($values as $name => $value) {
+    if (!is_string($value) || $value === '') {
+        throw new RuntimeException('Missing ZEIM database environment configuration: '.$name);
+    }
+}
+return $values;

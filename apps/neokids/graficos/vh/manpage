@@ -1,0 +1,397 @@
+NAME 
+     SYNOPSIS 
+     DESCRIPTION 
+     EXAMPLES 
+     USAGE 
+     DEFTAIL 
+         Global attributes 
+         Objects' attributes 
+         Classes 
+     Contact info 
+     Copyright 
+
+
+
+NAME 
+
+VH Graph - Graph Plotting Class for PHP3 
+
+
+
+SYNOPSIS 
+
+include(``/patch/to/the/class/class.graph''); 
+
+
+
+DESCRIPTION 
+
+VH Graph is a PHP3 class to create and display GIF graph The following classes for graphs are defined: 
+
+bargraph 
+     Create a bar (column) char. 
+
+linepoints 
+     Create line graph, linepoints graph and points graph. 
+
+areagraph 
+     Create an area graph. 
+
+mixgraph 
+     Actually there is no mixgraph. But you can create a mixture of different chart on top of each other. 
+
+piegraph 
+     Create a pie chart. 
+
+
+
+EXAMPLES 
+
+Please check out http://www.vhconsultants.com/graph.htm or see examples in the distribution. 
+
+
+
+USAGE 
+
+Only 4 function calls are needed to plot a graph. You need an array of data either from database or other sources. Define the x values
+first, and followed by arrays of y values. 
+
+    $data = array( 
+              array("Jan","Feb","March","April","May","June"),
+              array( 1.0 , 2.3 ,  4.1  , -1.8  , 0.4 , 2.8  ),
+              array( 1.2 , 0.3 ,  3.2  ,  1.7  , 1.4 , 1.8  ),
+              array( 0.3 , 3.2 ,  2.5  ,  1.9  , 1.9 , 2.0  ));
+
+Start a new graph with the phpplot() call and followed by phpdata() to parse the data. 
+
+    phpplot(array(
+                     "grid"       => true,
+                     "cubic"      => true,
+                     "size"       => array(400,250),
+                     "box_showbox"=> true,
+                     "title_text" => "Bar Graph",
+                     "yaxis_labeltext"=> "Revenue (in million $)",
+                     "xaxis_labeltext"=> "Months",
+                     "legend_shift"   => array(-300,10)
+            ));
+
+    phpdata($data);
+
+phpplot() takes an optional argument, an array, to define global settings for the graph. Individual object's attributes need to be set in
+this function call also. Like xaxis_labeltext, where xaxis is the object, and labeltext is the attribute to define the x label. 
+
+phpdata() takes one required argument, the data array. If the range of y axis or y2 axis is not set in phpplot(), it will auto generate
+the range. 
+
+Plotting the graph is simply call one of the predefined drawing classes with phpdraw() 
+
+     phpdraw(bargraph,
+             array("drawsets" => array(1,2),
+                   "legend"=> array("First Half Revenue",
+                                    "Last Year Result"),
+                   "barspacing"=> 8,
+                   "showvalue"=> false )
+             );
+
+phpdraw() takes two arguments. The first one should be one of the followings: bargraph, linepoints, areagraph, piegraph. Multipul
+phpdraw()s can be called to draw a mixed chart. 
+
+The last call to complete this graph is phpshow() which takes an optional argument - the output gif filename. If called without
+argument, the gif data will be output to stdout and proceeded by "Content-type: image/gif". 
+
+
+
+DEFTAIL 
+
+
+
+Global attributes 
+
+interlace true|false 
+     Set gif output to interlace if set to true. Default is true. 
+
+transparent true|false 
+     Set background to transparent. Default is false. 
+
+background color 
+     Default background is white. Colors are defined in global variable $RGB which can be overwrite by users in the script. 
+
+     Available colors are "white","black","gray","lgray","dgray","blue","lblue","dblue",
+     "yellow","lyellow","dyellow","green","lgreen","dgreen","red",
+     "lred","dred","purple","lpurple","dpurple","gold","pink","dpink",
+     "marine","cyan","lcyan","maroon","olive","navy","teal","silver",
+     "lime","khaki","lsteelblue","seagreen","lseagreen","skyblue",
+     "lskyblue","slateblue","slategray","steelblue","tan","violet", "wheat" 
+
+     Redefine $RGB like the following, 
+
+          $RGB = array(
+                         "slategray" => array(0x70,0x80,0x90),
+                         "steelblue" => array(0x46,0x82,0xB4)
+                  );
+
+size array(width,height) 
+     Set the size of the gif graph. Default to array(400,300). 
+
+cubic true|false 
+     If true, draw 3 D plots. Default to false 
+
+box true|false 
+     If true, draw the outline box. Default to true. If in 3 D mode, draw box. Default for piegraph is false. 
+
+grid true|false 
+     Draw grid. Default to true. Default for piegraph is false. 
+
+title true|false 
+     Draw title. Default to true 
+
+xaxis true|false 
+     Draw xaxis. Default to true. Default for piegraph is false. 
+
+yaxis true|false 
+     Draw yaxis. Default to true. Default for piegraph is false. 
+
+y2axis true|false - obsolete 
+     This attributes is no longer honored in the format of global attributes starting from 1.0Beta Release 2. You may use it in
+     phpdraw() to draw a second Y axis. 
+
+legend true|false 
+     Draw legend for each dataset. Default to true. 
+
+ymarkset array() 
+     Set the marks for y axis. Default will be generated from phpdata() call. 
+
+y2markset array() 
+     Set the marks for the second y axis. Default will be generated from phpdata() call. 
+
+yrange array(start,end,stip) 
+     Set the range for y axis. If ymarkset is not set, the markset will be generated from yrange. Default is set in phpdata(). 
+
+y2range array(start,end,stip) 
+     Range for the second y axis. 
+
+colorset array(color1,color2,..) 
+     The colors for the datasets. Default is array("cyan","lred","green","lblue","pink","purple","gold"). Sorry not much taste in
+     color. You can redefine it. 
+
+ttf fontname 
+     The font file name without the ttf suffix. Need to set the global ENV $fontpath which is default to ``./''. 
+
+zeroline true|false 
+     Draw the zero line. Default to true. 
+
+zeroaxis true|false 
+     Draw x axis at the zero line. Default to false. 
+
+lepos array(x,y) 
+     Set the legend's position in the plot. Left up corner is (0,0). Default is set by the program. 
+
+ledir x|y 
+     Direction of the legend. Default is set by the program. 
+
+
+
+Objects' attributes 
+
+Base object attributes 
+     Base object attributes is inherited by all the objects. 
+
+         color color Set the color for the object. Default to black. 
+
+         text string Set the string. Default to "My Plot". 
+
+         textcolor color Set the color of the string. Default to black. 
+
+         textsize int Set the size of the ttf font size. Default 12. 
+
+         pos array(x,y) Set the position of the object in the plot. Default is auto placement. 
+
+         shift array(x,y) Set relative x and y shifting from the position. Default is array(0,0). 
+
+         scale float Scale the size of the object. May not applicable in all the cases. Default value is 1.0. 
+
+         ttf TTF font Set the true type font for this object. Default to the global ttf settings if it is set. 
+
+box object 
+         showbox true|false Draw the box if set to true. Default to false. 
+
+         boxsize small|medium|big Set the box size which define the drawing region of the plot. Default to medium. 
+
+         xscale float Setting the x direction scale for the box. Default to 1.0. 
+
+         yscale float Setting the y direction scale for the box. Default to 1.0. 
+
+         shadow true|false Draw a shadow for the box. Not appliable in 3 D mode. Default to false. 
+
+grid object 
+         xgrid true|false Turn x direction grid on if set true. Default is true. 
+
+         ygrid true|false Turn y direction grid on if set true. Default is true. 
+
+         xdash true|false Draw x direction grid as dashed line. Default is false. 
+
+         ydash true|false Draw y direction grid as dashed line. Default is false. 
+
+         mxgrid number Number of grids for each x tick. Default to 1. 
+
+         mygrid number Number of grids for each y tick. Default to 1. 
+
+title object 
+         location topcenter|bottomcenter Location of the title. Default to topcenter. 
+
+         textfont 1-5 Use build-in textfont is ttf is not set. Default is 4. 
+
+         textsize int TTF font size. Default to 18. 
+
+         border true|false Draw border around the title. Default to false. 
+
+         degree 0-360 Only meaningful when used with TTF fonts. Default to zero. For build in fonts, draw a verticle string for
+         any degree != 0. 
+
+xaxis object 
+         axis true|false Draw the axis line. Default to true. 
+
+         tick true|false Draw ticks. Default to true. 
+
+         ticklength number Length of the ticks. Default to 4. 
+
+         tickskip number Skip of ticks. Default is no skip and value is set to 1. 
+
+         mark true|false Draw the mark. Default to true. 
+
+         markcolor color Mark color. Default to black. 
+
+         markfont 1-5 Build in font for mark. Default to 2. 
+
+         markttf TTF font Use TTF font for the mark. Default to global attribute ttf if it is set. 
+
+         marksize TTF size Size of the TTF font for mark. Default value is 10. 
+
+         markshift array(x,y) Shift value for the mark. Default to array(0,0). 
+
+         label true|false Draw label. Default to true. 
+
+         labelfont 1-5 Build in font for label. Default to 3. 
+
+         labeltext string Text string for the label. Default is X axis. 
+
+         labelcolor color Color for the label text. Default is black. 
+
+         labelsize TTF font size TTF font size for the label. Default value is 14. 
+
+         labelpos center|right Position of the label. Default to center. 
+
+         labeldegree 0-360 Rotating the label. Only meaningful in TTF fonts situation. Default is . 
+
+         labelshift array(x,y) Relative shift for label. Default is array(0,0). 
+
+         labelttf TTF font TTF font for label. Default to global ttf value if it is set. 
+
+         fillcolor color Set the fillcolor for 3 D mode. Default to lgray. 
+
+yaxis object 
+         Note Most of attributes are sames as those of xaxis object. 
+
+         labeltext string Text string for the label. Default is Y axis. 
+
+         labeldegree 0-360 Default to 90. 
+
+         fillcolor color Default value is white. 
+
+y2axis object 
+         Note Same as the yaxis object. 
+
+legend object 
+         type 1-4,10 The legend point type. Default is 10 - a square. 
+
+         width number Size of the legend point type. Default value 10. 
+
+         filled true|false Use filled point. Default is true. 
+
+
+
+Classes 
+
+Currently, there are bargraph,linepoints,areagraph, piegraph. 
+
+common attributes for all the classes 
+         drawsets array(n1,n2,...) Draw the datasets n1,n2 .... Default to array(1). 
+
+         y2axis true|false Draw the second Y axis. Default value is false. Second Y axis is used for the last set of dataset for
+         this graph. 
+
+         showvalue true|false Plot the value for each point/bar also. Default is false 
+
+         valuefont 1-5 Build in font for the plotting the value. Default to 3. 
+
+         valuecolor color Color of the value. Default to black. 
+
+         valuesize TTF font size TTF font size for the value. Default is 10. 
+
+         valuettf TTF font TTF font for the value. Default is the global ttf font if it is set. 
+
+         legend array(string,string,...) Legend text for the datasets. Default is none. 
+
+         legendfont 1-5 Build in font. Default is 3. 
+
+         legendsize TTF font size Default is 10. 
+
+         legendttf TTF font Default is the global ttf font if it is set. 
+
+         legendscale number Size of the legend point. Default to 1. 
+
+bargraph 
+         barmode side|stack|overwrite Drawing mode for multipul columns. Default is side. 
+
+         barspacing int Space between bars. Default is zero. 
+
+linepoints 
+         showline true|false Draw line. Default is true. 
+
+         showpoint true|false Draw points. Default is true. 
+
+         linewidth number Width of the lines. Default is 1. 
+
+         filled true|false Draw filled points. Default is true. 
+
+areagraph 
+         Note. Most of the linepoints attributes are valid here. 
+
+piegraph 
+         showmark true|false Show the percentage on the pie. Default to true. 
+
+         markfont 1-5 Font for the mark. Default to 3. 
+
+         markcolor color Color for the mark. Default to black. 
+
+         marksize TTF font size. TTF font size. Default to 10. 
+
+         markshift array(x,y) Shift for the mark. Default to array(0,0). 
+
+         markttf TTF font TTF font for the mark. 
+
+         showlabel true|false Show the label. Default to true. You can define label attributes labelfont, labelcolor, labelshift,
+         labelsize, labelttf. 
+
+         scale float Scale the size of the pie. Default to 1.0. 
+
+         radius int Set the size of the pie. Default is generated by program. 
+
+         thickness int Set the thickness of the 3D pie. Default to 12. 
+
+
+
+Contact info 
+
+email: php@earthlink.net 
+
+web: http://www.vhconsultants.com/ 
+
+
+
+Copyright 
+
+Copyright (C) 1999 - 2001 Robbin Zhang All rights reserved. 
+
+This package is free for personal usage. See the COPYRIGHT in the package for detail. 
+

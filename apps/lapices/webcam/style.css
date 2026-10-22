@@ -1,0 +1,178 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Cabin+Condensed:600);
+@import url(https://fonts.googleapis.com/css?family=Cabin:600);
+
+body {
+
+}
+
+.panel-heading {
+	background: none!important;
+	background-color:transparent!important;
+	border:none;
+	}
+	
+.panel-title {
+	background: none!important;
+	background-color:transparent!important;
+	border:none;
+	}
+.panel-default{
+	background: none!important;
+	background-color:transparent!important;
+	border:none;
+	}
+.panel{
+	background: none!important;
+	background-color:transparent!important;
+	border:none;
+	}
+
+.texto_negro {
+	color:#000;	
+}
+
+.resaltado {
+	font-weight: bolder;
+	color:#FF9;
+}
+
+.fa {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #FFFFFF;
+	display: block;
+}
+
+.fa_p {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	display: block;
+}
+
+
+.texto1 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #FFFFFF;
+}
+.fneg {
+	color: #000000;
+	font-weight: bold;
+	display: block;
+}
+
+a:hover {
+	font-family: Cabin Condensed, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+a:link {
+	font-family: Cabin Condensed, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	font-family: Cabin Condensed, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+.fabold {
+	font-family: Cabin Condensed, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #FFFFFF;
+	font-style: normal;
+	font-weight: bold;
+	display: block;
+}
+.mini {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	display: block;
+}
+.faverde {
+
+	font-family: Cabin Condensed, Century Gothic, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	display: block;
+}
+.faverde2 {
+
+
+	font-family: Cabin Condensed, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.inferior_pizarra {
+background-image: url('ima/ev_infe.gif');
+background-repeat: no-repeat;
+background-position: center bottom;
+}
+
+.escuelaVerano {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 16px;
+	color: #FFFFFF;
+	display: block;
+}
+
+.color1 {
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+.color2 {
+	color: #f4e601;
+	}
+	
+.color3 {
+	color: #37c7e8;
+	}	
+
+.escuelaVeranoEncabezado {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 24px;
+	display: block;
+}
+
+.escuelaVeranoOscuro {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 16px;
+	color: #000000;
+	display: block;
+}
+
+.escuelaVeranoDerecha {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 16px;
+	color: #FFFFFF;
+	display: block;
+	text-align: right;
+}
+
+.escuelaVeranoCentrado {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 16px;
+	color: #FFFFFF;
+	display: block;
+	text-align: center;
+}
+
+.textoBlancoCentrado {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.fondoSummerSchool {
+	    background-image: url('/ima/summer-school-2015.jpg');
+	}
+

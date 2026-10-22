@@ -1,0 +1,4 @@
+RewriteEngine On
+# The simplified family portal replaces all legacy PHP entry points.
+RewriteRule \.php$ /app/ [R=303,L,QSD]
+DirectoryIndex /app/index.php

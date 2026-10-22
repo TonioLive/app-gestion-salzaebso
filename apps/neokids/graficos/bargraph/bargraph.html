@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>BarGraph Documentation</title>
+    <style type="text/css">
+    <!--
+      body {
+        font-size: 9pt;
+        font-family: Verdana, Tahoma;
+      }
+      h1 {
+        font-size: 14pt;
+      }
+      h2 {
+        font-size: 12pt;
+        font-weight: bold;
+      }
+      h3 {
+        font-size: 9pt;
+        color: #123456;
+      }
+      a {
+        color: #0000FF;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <h1>BarGraph Documentation</h1>
+    <hr>
+    <h2>Description</h2>
+    BarGraph is a class meant to create graphics in two diferent methods: file input or method calling.<br>
+    The first method is better because you don't have to write almost no code and every settings can be on
+    the file. The second is when you instanciate the class, call some design procedures, send data and draw
+    the graph.
+    <h2>Methods</h2>
+    <a href="#1">BarGraph::GetFinalGraphDimensions()</a><br>
+    <a href="#2">BarGraph::LoadGraph($path)</a><br>
+    <a href="#3">BarGraph::DrawGraph($path)</a><br>
+    <a href="#4">BarGraph::SetGraphAreaHeight($height)</a><br>
+    <a href="#5">BarGraph::SetAxisBackgroundColor($red, $green, $blue)</a><br>
+    <a href="#6">BarGraph::SetAxisBorderColor($red, $green, $blue)</a><br>
+    <a href="#7">BarGraph::SetBarBackgroundColor($red, $green, $blue)</a><br>
+    <a href="#8">BarGraph::SetBarBorderColor($red, $green, $blue)</a><br>
+    <a href="#9">BarGraph::SetBarData($data)</a><br>
+    <a href="#10">BarGraph::SetBarDimensions($width, $height)</a><br>
+    <a href="#11">BarGraph::SetBarPadding($padding)</a><br>
+    <a href="#12">BarGraph::SetAxisStep($step)</a><br>
+    <a href="#13">BarGraph::SetGraphBackgroundColor($red, $green, $blue)</a><br>
+    <a href="#14">BarGraph::SetGraphBorderColor($red, $green, $blue)</a><br>
+    <a href="#15">BarGraph::SetGraphBorderWidth($width)</a><br>
+    <a href="#16">BarGraph::SetGraphPadding($left, $top, $right, $bottom)</a><br>
+    <a href="#17">BarGraph::SetGraphTitle($title)</a><br>
+    <a href="#18">BarGraph::SetGraphTitleColor($red, $green, $blue)</a><br>
+    
+    <a name="1"><h3>BarGraph::GetFinalGraphDimensions()</h3></a>
+    After calling the methods you want, you can call this to know the final width and height of the image
+    graph ;)
+    <a name="2"><h3>BarGraph::LoadGraph($path)</h3></a>
+    Loads a definition file with graph settings and data
+    <a name="3"><h3>BarGraph::DrawGraph($path)</h3></a>
+    Draws the graph. If path is given, graph will be sent directly to output. If not, it will be saved.
+    <a name="4"><h3>BarGraph::SetGraphAreaHeight($height)</h3></a>
+    This height is related to the graph area itself, not all the image. For you to understand what height am
+    I talking: padding-top + areaheight + padding-bottom = image-height.
+    For now you don't set the width of a graph but only the height (later that will be possible by putting the
+    class calculating the side paddings).
+    <a name="5"><h3>BarGraph::SetAxisBackgroundColor($red, $green, $blue)</h3></a>
+    Let's you set the background color for the axis
+    <a name="6"><h3>BarGraph::SetAxisBorderColor($red, $green, $blue)</h3></a>
+    Let's you set the border color for the axis
+    <a name="7"><h3>BarGraph::SetBarBackgroundColor($red, $green, $blue)</h3></a>
+    Let's you set the background color for the bars
+    <a name="8"><h3>BarGraph::SetBarBorderColor($red, $green, $blue)</h3></a>
+    Let's you set the border color for the bars
+    <a name="9"><h3>BarGraph::SetBarData($data)</h3></a>
+    Let's you set the data of the bars. The argument should be an array where the key
+    is the name of the bar and the value is the y value of the bar (only non negative)
+    <a name="10"><h3>BarGraph::SetBarDimensions($width, $height)</h3></a>
+    Let's you set the dimensions (width and height) of the bar. This is for better 3D viewing
+    <a name="11"><h3>BarGraph::SetBarPadding($padding)</h3></a>
+    Let's you set the padding of the bars (left and right)
+    <a name="12"><h3>BarGraph::SetAxisStep($step)</h3></a>
+    Let's you set the step on the axis scale (2, 3, 10, 20, 50, 100, ...)
+    <a name="13"><h3>BarGraph::SetGraphBackgroundColor($red, $green, $blue)</h3></a>
+    Let's you set the background color for the graph image
+    <a name="14"><h3>BarGraph::SetGraphBorderColor($red, $green, $blue)</h3></a>
+    Let's you set the border color for the graph image
+    <a name="15"><h3>BarGraph::SetGraphBorderWidth($width)</h3></a>
+    Let's you set the border width of the graph image (0 disables it as well as no argument)
+    <a name="16"><h3>BarGraph::SetGraphPadding($left, $top, $right, $bottom)</h3></a>
+    Let's you set paddings around all the graph.
+    <a name="17"><h3>BarGraph::SetGraphTitle($title)</h3></a>
+    Let's you set the title for the graph.
+    <a name="18"><h3>BarGraph::SetGraphTitleColor($red, $green, $blue)</h3></a>
+    Let's you set the color for the title of the graph
+    <h2>Examples</h2>
+    <a href="graph.def">Definition file</a><br>
+    <a href="loaddefinition.php">How to load a definition file</a>
+  </body>
+</html>

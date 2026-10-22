@@ -1,0 +1,53 @@
+Options -Indexes
+
+# No se permite exponer metadatos de control de versiones ni otros archivos
+# ocultos; .well-known se conserva para validaciones de certificados.
+RewriteEngine On
+RewriteRule "(^|/)\.(?!well-known(?:/|$))" - [F,L]
+
+<FilesMatch "\.(?:sql|log|ini|env|bak|dist|md|ps1)$">
+    Require all denied
+</FilesMatch>
+
+# Options +FollowSymLinks 
+# RewriteEngine on
+# RewriteCond %{HTTP_HOST} .
+# RewriteCond %{HTTP_HOST} !^escuelasinfantileslapices\.es
+# RewriteRule (.*) https://escuelasinfantileslapices.es/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+# Transitional routes: secure PHP 8-compatible handlers replace the legacy
+# scripts while keeping existing form URLs working.
+RewriteRule ^configuracion/inicio_sesion\.php$ configuracion/inicio_sesion_moderno.php [L]
+RewriteRule ^configuracion/cerrar_sesion\.php$ configuracion/cerrar_sesion_moderno.php [L]
+RewriteRule ^configuracion/cerrar_sesion_padres\.php$ app/cerrar_sesion.php [L]
+RewriteRule ^app/acceso\.php$ app/acceso_familias.php [L]
+RewriteRule ^app/accesotoken\.php$ app/accesotoken_seguro.php [L]
+RewriteRule ^webcam/acceso\.php$ app/acceso_familias.php [L]
+RewriteRule ^webcam/accesotoken\.php$ app/accesotoken_seguro.php [L]
+RewriteRule ^api/autenticacion(?:_old)?\.php$ api/index.php [L]
+RewriteRule ^gestion/docentes/registro_entrada\.php$ gestion/docentes/registro_entrada_moderno.php [L]
+RewriteRule ^gestion/docentes/registro_salida\.php$ gestion/docentes/registro_salida_moderno.php [L]
+RewriteRule ^aulas/gestion_aulas\.php$ aulas/gestion_aulas_moderno.php [L]
+RewriteRule ^alumnos/busqueda_alumno\.php$ alumnos/busqueda_alumno_moderno.php [L]
+RewriteRule ^alumnos/gestion_alumnos\.php$ alumnos/gestion_alumnos_moderno.php [L]
+RewriteRule ^gestion/usuarios/gestion_u\.php$ gestion/usuarios/gestion_u_moderno.php [L]
+RewriteRule ^gestion/usuarios/recordar_password\.php$ gestion/usuarios/recordar_password_seguro.php [L]
+
+RewriteRule ^contacto-lapices-general-aviles-2025-2026 /contacto/?idc=6&id_curso=42 [NC,L]
+RewriteRule ^contacto-lapices-vicente-branchat-2025-2026 /contacto/?idc=7&id_curso=42 [NC,L]
+RewriteRule ^contacto-lapices-rio-nervion-2025-2026 /contacto/?idc=8&id_curso=42 [NC,L]
+RewriteRule ^contacto-lapices-fernando-catolico-2025-2026 /contacto/?idc=13&id_curso=42 [NC,L]
+RewriteRule ^contacto-lapices-general-aviles-2026-2027 /contacto/?idc=6&id_curso=44 [NC,L]
+RewriteRule ^contacto-lapices-vicente-branchat-2026-2027 /contacto/?idc=7&id_curso=44 [NC,L]
+RewriteRule ^contacto-lapices-rio-nervion-2026-2027 /contacto/?idc=8&id_curso=44 [NC,L]
+RewriteRule ^contacto-lapices-fernando-catolico-2026-2027 /contacto/?idc=13&id_curso=44 [NC,L]
+
+RewriteRule ^contacto-lapices-general-aviles-escuela-verano-2026 /formulario/contacto_ev.php?idc=6&id_curso=45 [NC,L]
+RewriteRule ^contacto-lapices-rio-nervion-escuela-verano-2026 /formulario/contacto_ev.php?idc=8&id_curso=45 [NC,L]
+RewriteRule ^contacto-lapices-fernando-catolico-escuela-verano-2026 /formulario/contacto_ev.php?idc=13&id_curso=45 [NC,L]
+
+#RewriteCond %{HTTP_HOST} www.escuelasinfantileslapices.es
+#RewriteRule (.*) https://www.escuelasinfantileslapices.es/$1 [R=301,L]

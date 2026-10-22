@@ -1,0 +1,114 @@
+.session-timeout-dialog[hidden] {
+    display: none !important;
+}
+
+.session-timeout-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483600;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(10, 34, 30, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+.session-timeout-dialog__card {
+    box-sizing: border-box;
+    width: min(100%, 430px);
+    padding: 26px;
+    border: 1px solid rgba(23, 75, 65, 0.16);
+    border-radius: 22px;
+    background: #fff;
+    color: #102f2a;
+    box-shadow: 0 24px 70px rgba(10, 34, 30, 0.28);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.session-timeout-dialog__icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    place-items: center;
+    border-radius: 15px;
+    background: #fff2d8;
+    color: #8b5700;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.session-timeout-dialog h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+    line-height: 1.2;
+}
+
+.session-timeout-dialog p {
+    margin: 0;
+    color: #536b66;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.session-timeout-dialog__countdown {
+    display: block;
+    margin: 18px 0;
+    color: #174b41;
+    font-size: 31px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    text-align: center;
+}
+
+.session-timeout-dialog__actions {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 10px;
+}
+
+.session-timeout-dialog button,
+.session-timeout-dialog a {
+    min-height: 46px;
+    padding: 12px 15px;
+    border: 1px solid #cbd9d6;
+    border-radius: 12px;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.session-timeout-dialog a {
+    color: #38534d;
+    background: #fff;
+}
+
+.session-timeout-dialog button {
+    color: #fff;
+    border-color: #176a5a;
+    background: #176a5a;
+}
+
+.session-timeout-dialog button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+@media (max-width: 520px) {
+    .session-timeout-dialog {
+        align-items: end;
+        padding: 12px;
+    }
+
+    .session-timeout-dialog__card {
+        padding: 22px 18px 18px;
+        border-radius: 22px 22px 14px 14px;
+    }
+
+    .session-timeout-dialog__actions {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,2143 @@
+@import url("/gestion/panel/assets/global-search.css?v=20260730.4");
+
+:root {
+    --legacy-admin-green-950: #0f2f2a;
+    --legacy-admin-green-800: #174b41;
+    --legacy-admin-green-700: #21675a;
+    --legacy-admin-green-100: #dcece7;
+    --legacy-admin-coral: #e56f52;
+    --legacy-admin-ink: #17322e;
+    --legacy-admin-muted: #60736f;
+    --legacy-admin-line: #d9e3e0;
+    --legacy-admin-surface: #ffffff;
+    --legacy-admin-background: #f2f6f4;
+}
+
+body.legacy-admin {
+    margin: 0 !important;
+    min-width: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background: var(--legacy-admin-background) !important;
+    color: var(--legacy-admin-ink) !important;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    -webkit-tap-highlight-color: rgba(33, 103, 90, .16);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Capa flotante de ayuda del programa antiguo. Al perder su posicion absoluta
+   quedaba como un bloque vacío de una pantalla completa al final de cada módulo. */
+.legacy-admin #capa1 {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.legacy-admin *,
+.legacy-admin *::before,
+.legacy-admin *::after {
+    box-sizing: border-box;
+}
+
+.legacy-admin font {
+    color: inherit;
+    font-family: inherit !important;
+    font-size: inherit;
+}
+
+.legacy-admin a {
+    color: var(--legacy-admin-green-700);
+    text-decoration: none;
+}
+
+.legacy-admin a:hover {
+    color: var(--legacy-admin-green-950);
+    text-decoration: none;
+}
+
+.legacy-admin > div[align="center"] {
+    width: 100%;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1 {
+    display: block;
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    min-height: 0;
+    margin: 12px auto;
+    overflow: hidden;
+    border: 1px solid var(--legacy-admin-line) !important;
+    border-radius: 22px;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    background: var(--legacy-admin-surface) !important;
+    box-shadow: 0 18px 55px rgba(22, 55, 49, .10);
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody {
+    display: block;
+    width: 100%;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody > tr {
+    width: 100%;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody > tr.legacy-admin-shell__spacer,
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__decorative-cell {
+    display: none !important;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody > tr.legacy-admin-shell__header-row,
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody > tr.legacy-admin-shell__content-row {
+    display: block;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell > tbody > tr > td {
+    border: 0 !important;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__header-cell,
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__content-cell {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__header-cell {
+    padding: 0 !important;
+    font-size: 0;
+    line-height: 0;
+    text-align: left !important;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__header-cell .legacy-admin-header {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__content-cell {
+    min-width: 0;
+    padding: clamp(12px, 1.25vw, 22px) !important;
+}
+
+.legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__content-cell > div[align="center"] {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+.legacy-admin img[src*="/imagen/nada.gif"],
+.legacy-admin img[src*="imagen/nada.gif"] {
+    display: none !important;
+}
+
+.legacy-admin-header {
+    width: 100%;
+    color: #fff;
+    text-align: left;
+    background:
+        radial-gradient(circle at 10% -30%, rgba(255, 255, 255, .18), transparent 42%),
+        linear-gradient(125deg, var(--legacy-admin-green-950), var(--legacy-admin-green-800));
+}
+
+.legacy-admin-header__main {
+    display: flex;
+    align-items: center;
+    min-height: 82px;
+    padding: 14px 22px;
+    gap: 24px;
+}
+
+.legacy-admin-brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 10px;
+    color: #fff !important;
+}
+
+.legacy-admin-brand img {
+    display: block !important;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .18);
+}
+
+.legacy-admin-brand span,
+.legacy-admin-user__copy {
+    display: grid;
+}
+
+.legacy-admin-brand strong {
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.legacy-admin-brand small,
+.legacy-admin-user small,
+.legacy-admin-context__label {
+    color: rgba(255, 255, 255, .72);
+    font-size: 11px;
+}
+
+.legacy-admin-context {
+    display: grid;
+    min-width: 0;
+    margin-right: auto;
+    padding-left: 22px;
+    border-left: 1px solid rgba(255, 255, 255, .18);
+}
+
+.legacy-admin-context strong {
+    max-width: 330px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.legacy-admin-centre-switcher {
+    min-width: min(330px, 35vw);
+}
+
+.legacy-admin-centre-switcher select {
+    width: 100%;
+    min-height: 36px;
+    padding: 7px 34px 7px 10px;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .96);
+    color: var(--legacy-admin-ink);
+    font-size: 12px !important;
+}
+
+.legacy-admin-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legacy-admin-user strong {
+    max-width: 220px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.legacy-admin-avatar {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .13);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.legacy-admin-action {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 10px;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.legacy-admin-action:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+.legacy-admin-action--logout {
+    border-color: rgba(229, 111, 82, .55);
+    background: rgba(229, 111, 82, .15);
+}
+
+.legacy-admin-nav {
+    display: flex;
+    gap: 6px;
+    padding: 0 18px 12px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.legacy-admin-nav a {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border-radius: 9px;
+    color: rgba(255, 255, 255, .76);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.legacy-admin-nav a:hover,
+.legacy-admin-nav a.is-active {
+    background: rgba(255, 255, 255, .14);
+    color: #fff;
+}
+
+.legacy-admin-login {
+    display: flex;
+    align-items: end;
+    margin-left: auto;
+    gap: 10px;
+}
+
+.legacy-admin-login label {
+    display: grid;
+    gap: 4px;
+    color: rgba(255, 255, 255, .75);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.legacy-admin-login input {
+    width: 150px;
+    min-height: 36px;
+    border-color: rgba(255, 255, 255, .28) !important;
+    background: rgba(255, 255, 255, .96) !important;
+}
+
+.legacy-admin-login button {
+    min-height: 36px;
+}
+
+.legacy-admin table {
+    width: auto;
+    max-width: 100%;
+}
+
+.legacy-admin table[width="100%"],
+.legacy-admin table[width="98%"],
+.legacy-admin table[width="99%"],
+.legacy-admin table[width="690"],
+.legacy-admin table.legacy-responsive-form {
+    width: 100% !important;
+}
+
+.legacy-admin table[width="100%"] > tbody > tr > td[width="50%"]:only-child {
+    width: 100% !important;
+}
+
+.legacy-admin img {
+    max-width: 100%;
+}
+
+.legacy-admin iframe,
+.legacy-admin object,
+.legacy-admin embed {
+    max-width: 100%;
+}
+
+.legacy-admin .legacy-table-scroll,
+.legacy-data-table-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-color: #a9bdb7 #eef4f2;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.legacy-admin .legacy-table-scroll > table {
+    width: max-content !important;
+    min-width: 100%;
+    max-width: none;
+}
+
+.legacy-admin .legacy-wide-table {
+    min-width: max-content;
+}
+
+.legacy-admin table[border="1"],
+.legacy-admin table[border="1"][style] {
+    overflow: hidden;
+    border: 1px solid var(--legacy-admin-line) !important;
+    border-radius: 13px;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    background: #fff;
+}
+
+.legacy-admin table[border="1"] td,
+.legacy-admin table[border="1"] th {
+    padding: 9px 11px !important;
+    border-color: var(--legacy-admin-line) !important;
+}
+
+.legacy-admin table.legacy-module-menu {
+    display: block;
+    width: 100% !important;
+    overflow: visible;
+    border: 0 !important;
+    background: transparent;
+}
+
+.legacy-admin table.legacy-module-menu > tbody {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    gap: 12px;
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row {
+    display: grid;
+    grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
+    align-items: center;
+    min-height: 76px;
+    overflow: hidden;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 7px 20px rgba(22, 55, 49, .06);
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row:hover {
+    border-color: #b7cbc5;
+    box-shadow: 0 10px 26px rgba(22, 55, 49, .10);
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td {
+    display: block;
+    width: auto !important;
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td:first-child {
+    padding: 12px !important;
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td:first-child input[type="button"],
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td:first-child button {
+    width: 100% !important;
+    height: auto !important;
+    white-space: normal;
+}
+
+.legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td:not(:first-child) {
+    padding: 12px 14px 12px 4px !important;
+    color: var(--legacy-admin-muted);
+    font-size: 12px;
+}
+
+.legacy-admin .legacy-module-section {
+    width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+    text-align: left !important;
+}
+
+.legacy-admin .legacy-module-section > font:first-child {
+    display: block;
+    margin: 0 0 14px;
+    color: var(--legacy-admin-ink);
+    font-size: clamp(20px, 2vw, 27px) !important;
+}
+
+.legacy-admin table.legacy-student-family-editor {
+    width: 100% !important;
+    max-width: none;
+    overflow: visible;
+    table-layout: auto;
+}
+
+.legacy-admin table.legacy-student-family-editor > tbody > tr > td {
+    vertical-align: middle !important;
+}
+
+.legacy-admin table.legacy-student-family-editor > tbody > tr > td[rowspan] {
+    width: 126px !important;
+    min-width: 126px !important;
+    max-width: 126px !important;
+    padding: 18px !important;
+}
+
+.legacy-admin table.legacy-student-family-editor > tbody > tr > td[width="100%"] {
+    width: auto !important;
+}
+
+.legacy-admin table.legacy-student-family-editor > tbody > tr > td[rowspan] img {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.legacy-admin .legacy-family-table-region {
+    padding: 16px !important;
+    background: #f7faf9 !important;
+    text-align: left !important;
+}
+
+.legacy-admin .legacy-family-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 12px;
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+}
+
+.legacy-admin .legacy-family-table-scroll .legacy-family-table,
+.legacy-admin .legacy-family-table-scroll #tablaformulario > table {
+    width: 100% !important;
+    min-width: 980px;
+    max-width: none;
+    table-layout: fixed;
+    overflow: visible;
+    border: 0 !important;
+    border-radius: 0;
+}
+
+.legacy-admin .legacy-family-table-scroll #tablaformulario > table + table {
+    border-top: 1px solid var(--legacy-admin-line) !important;
+}
+
+.legacy-admin .legacy-family-table-scroll .legacy-family-table td,
+.legacy-admin .legacy-family-table-scroll #tablaformulario > table td {
+    height: 56px;
+    padding: 8px !important;
+}
+
+.legacy-admin .legacy-family-table-scroll input[type="text"],
+.legacy-admin .legacy-family-table-scroll select {
+    width: 100% !important;
+    min-width: 0;
+}
+
+.legacy-admin .legacy-family-table-scroll input[name^="nombre"] {
+    min-width: 230px;
+}
+
+.legacy-admin .legacy-family-table-scroll input[type="radio"] {
+    width: 18px;
+    height: 18px;
+}
+
+.legacy-admin .legacy-family-table-region > input[type="button"] {
+    display: block;
+    margin: 12px 0 0;
+}
+
+.legacy-admin table.legacy-student-roster {
+    width: 100% !important;
+    min-width: 100%;
+    max-width: none;
+    table-layout: auto;
+    overflow: visible;
+}
+
+.legacy-admin table.legacy-student-roster > tbody > tr {
+    display: table-row !important;
+}
+
+.legacy-admin table.legacy-student-roster > tbody > tr > td {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: 0;
+    vertical-align: middle !important;
+    white-space: nowrap;
+}
+
+.legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__info > td {
+    min-width: 0;
+    white-space: normal;
+}
+
+.legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__head > td,
+.legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__head > th {
+    background: #eef5f2 !important;
+    color: var(--legacy-admin-green-950);
+    font-weight: 750;
+}
+
+.legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student:hover > td {
+    background: #f5faf8 !important;
+}
+
+.legacy-admin table.legacy-student-roster .legacy-student-roster__name {
+    min-width: 155px;
+    white-space: normal;
+}
+
+.legacy-admin table.legacy-student-roster .legacy-student-roster__actions {
+    min-width: 205px;
+    white-space: normal;
+}
+
+.legacy-admin table.legacy-student-roster img {
+    width: auto;
+    max-width: none;
+    vertical-align: middle;
+}
+
+.legacy-admin tr[bgcolor="#efefef"] > td,
+.legacy-admin tr[bgcolor="#EFEFEF"] > td,
+.legacy-admin td[bgcolor="#efefef"],
+.legacy-admin td[bgcolor="#EFEFEF"] {
+    background: #f3f7f5 !important;
+}
+
+.legacy-admin tr[bgcolor="#FFFFFF"] > td,
+.legacy-admin tr[bgcolor="#ffffff"] > td,
+.legacy-admin td[bgcolor="#FFFFFF"],
+.legacy-admin td[bgcolor="#ffffff"] {
+    background: #fff !important;
+}
+
+.legacy-admin input[type="text"],
+.legacy-admin input[type="password"],
+.legacy-admin input[type="email"],
+.legacy-admin input[type="number"],
+.legacy-admin input[type="date"],
+.legacy-admin input[type="search"],
+.legacy-admin select,
+.legacy-admin textarea {
+    max-width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #cbd8d4;
+    border-radius: 9px;
+    outline: none;
+    background: #fff;
+    color: var(--legacy-admin-ink);
+    font: inherit;
+    font-size: 13px !important;
+}
+
+.legacy-admin textarea {
+    min-height: 100px;
+}
+
+.legacy-admin input:focus,
+.legacy-admin select:focus,
+.legacy-admin textarea:focus {
+    border-color: var(--legacy-admin-green-700);
+    box-shadow: 0 0 0 3px rgba(33, 103, 90, .13);
+}
+
+.legacy-admin input[type="button"],
+.legacy-admin input[type="submit"],
+.legacy-admin input[type="reset"],
+.legacy-admin button {
+    min-height: 38px;
+    padding: 8px 15px !important;
+    border: 0 !important;
+    border-radius: 10px;
+    background: var(--legacy-admin-green-700);
+    color: #fff;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(33, 103, 90, .16);
+    touch-action: manipulation;
+}
+
+.legacy-admin input[type="button"]:hover,
+.legacy-admin input[type="submit"]:hover,
+.legacy-admin button:hover {
+    background: var(--legacy-admin-green-950);
+}
+
+.legacy-admin hr {
+    border: 0;
+    border-top: 1px solid var(--legacy-admin-line);
+}
+
+.legacy-admin h1,
+.legacy-admin h2,
+.legacy-admin h3,
+.legacy-admin h4 {
+    color: var(--legacy-admin-ink);
+    font-family: inherit;
+    letter-spacing: -.02em;
+}
+
+.legacy-module-page {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    text-align: left;
+}
+
+.legacy-module-page__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding: 4px 2px 20px;
+    gap: 24px;
+    border-bottom: 1px solid var(--legacy-admin-line);
+}
+
+.legacy-module-page__eyebrow {
+    color: var(--legacy-admin-green-700);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.legacy-module-page__heading h1 {
+    margin: 5px 0 4px;
+    font-size: clamp(25px, 3vw, 38px);
+}
+
+.legacy-module-page__heading p,
+.legacy-empty-state p {
+    margin: 0;
+    color: var(--legacy-admin-muted);
+}
+
+.legacy-module-page__meta {
+    display: grid;
+    min-width: 220px;
+    padding: 12px 15px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 12px;
+    background: #f7faf9;
+}
+
+.legacy-module-page__meta span {
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+.legacy-aula-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.legacy-aula-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 18px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(22, 55, 49, .07);
+}
+
+.legacy-aula-card__icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--legacy-admin-green-100);
+    color: var(--legacy-admin-green-800);
+    font-size: 17px;
+    font-weight: 850;
+}
+
+.legacy-aula-card__copy span {
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+.legacy-aula-card__copy h2 {
+    margin: 2px 0 0;
+    font-size: 18px;
+}
+
+.legacy-aula-card__actions {
+    display: flex;
+    grid-column: 1 / -1;
+    margin-top: 18px;
+    gap: 8px;
+}
+
+.legacy-card-action {
+    flex: 1 1 0;
+    padding: 9px 11px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 9px;
+    color: var(--legacy-admin-green-800) !important;
+    font-size: 11px;
+    font-weight: 750;
+    text-align: center;
+}
+
+.legacy-card-action--primary {
+    border-color: var(--legacy-admin-green-700);
+    background: var(--legacy-admin-green-700);
+    color: #fff !important;
+}
+
+.legacy-card-action:hover {
+    border-color: var(--legacy-admin-green-700);
+    background: var(--legacy-admin-green-100);
+}
+
+.legacy-card-action--primary:hover {
+    background: var(--legacy-admin-green-950);
+    color: #fff !important;
+}
+
+.legacy-empty-state {
+    padding: 42px 20px;
+    border: 1px dashed #b7cbc5;
+    border-radius: 14px;
+    background: #f7faf9;
+    text-align: center;
+}
+
+.legacy-heading-action {
+    flex: 0 0 auto;
+    padding: 10px 16px;
+}
+
+.legacy-search-panel {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto auto;
+    width: 100%;
+    min-width: 0;
+    align-items: end;
+    margin-bottom: 16px;
+    padding: 16px;
+    gap: 14px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 14px;
+    background: #f7faf9;
+}
+
+.legacy-search-panel select,
+.legacy-search-panel input,
+.legacy-search-panel textarea {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.legacy-search-panel__field {
+    display: grid;
+    gap: 5px;
+}
+
+.legacy-search-panel__field span,
+.legacy-search-panel legend {
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.legacy-search-panel input[type="search"] {
+    width: 100%;
+    min-height: 42px;
+}
+
+.legacy-search-panel fieldset {
+    display: flex;
+    min-width: 190px;
+    margin: 0;
+    padding: 5px 0 3px;
+    gap: 12px;
+    border: 0;
+}
+
+.legacy-search-panel legend {
+    margin-bottom: 4px;
+}
+
+.legacy-search-panel fieldset label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.legacy-alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    gap: 5px;
+}
+
+.legacy-alphabet a,
+.legacy-alphabet span {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--legacy-admin-green-800);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.legacy-alphabet span {
+    color: #a8b5b1;
+    background: #f4f6f5;
+}
+
+.legacy-alphabet a:hover,
+.legacy-alphabet a.is-active {
+    border-color: var(--legacy-admin-green-700);
+    background: var(--legacy-admin-green-700);
+    color: #fff;
+}
+
+.legacy-results-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 1px;
+    gap: 15px;
+}
+
+.legacy-results-heading > div {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+}
+
+.legacy-results-heading span,
+.legacy-results-heading small {
+    color: var(--legacy-admin-muted);
+    font-size: 11px;
+}
+
+.legacy-data-table-wrap {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 14px;
+}
+
+.legacy-data-table {
+    width: 100% !important;
+    min-width: 100%;
+    max-width: none !important;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: left;
+}
+
+.legacy-responsive-list td,
+.legacy-responsive-list th {
+    overflow-wrap: anywhere;
+}
+
+.legacy-data-table th {
+    padding: 11px 13px;
+    border-bottom: 1px solid var(--legacy-admin-line);
+    background: #f3f7f5;
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.legacy-data-table td {
+    padding: 12px 13px;
+    border-bottom: 1px solid #e8eeec;
+    color: var(--legacy-admin-ink);
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.legacy-data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.legacy-data-table tbody tr:hover td {
+    background: #f8fbfa;
+}
+
+.legacy-student-name {
+    color: var(--legacy-admin-green-800) !important;
+    font-weight: 800;
+}
+
+.legacy-data-table td small {
+    display: block;
+    color: var(--legacy-admin-muted);
+}
+
+.legacy-table-tag {
+    display: inline-block;
+    margin: 0 3px 3px 0;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: var(--legacy-admin-green-100);
+    color: var(--legacy-admin-green-800);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.legacy-access-status {
+    display: inline-flex;
+    min-height: 24px;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    color: #176647;
+    background: #e3f5ec;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.legacy-data-table__actions a {
+    display: inline-block;
+    padding: 6px 9px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.legacy-admin table.legacy-users-table {
+    width: 100% !important;
+    max-width: none !important;
+    table-layout: fixed;
+}
+
+.legacy-users-table__personal {
+    width: 20%;
+}
+
+.legacy-users-table__type {
+    width: 9%;
+}
+
+.legacy-users-table__centre {
+    width: 9%;
+}
+
+.legacy-users-table__contact {
+    width: 12%;
+}
+
+.legacy-users-table__username {
+    width: 9%;
+}
+
+.legacy-users-table__password {
+    width: 18%;
+}
+
+.legacy-users-table__date {
+    width: 9%;
+}
+
+.legacy-users-table__actions {
+    width: 14%;
+}
+
+.legacy-users-table th,
+.legacy-users-table td {
+    overflow-wrap: anywhere;
+}
+
+.legacy-users-table th:nth-child(7),
+.legacy-users-table td:nth-child(7) {
+    white-space: nowrap;
+}
+
+.legacy-users-page .legacy-results-heading > .legacy-card-action {
+    flex: 0 0 auto;
+    min-width: 190px;
+    padding-inline: 18px;
+}
+
+.legacy-users-toolbar {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin: 14px 0 12px;
+    gap: 12px;
+}
+
+.legacy-users-search {
+    display: grid;
+    width: min(100%, 520px);
+    gap: 5px;
+}
+
+.legacy-users-search span {
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.legacy-users-search input {
+    width: 100%;
+    min-height: 42px;
+}
+
+.legacy-users-search__controls {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) auto auto;
+    gap: 8px;
+}
+
+.legacy-users-search__controls .legacy-card-action {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+}
+
+.legacy-users-passwords-toggle {
+    flex: 0 0 auto;
+    min-height: 42px;
+    cursor: pointer;
+}
+
+.legacy-admin button.legacy-users-passwords-toggle {
+    border-color: var(--legacy-admin-green-700);
+    background: var(--legacy-admin-green-700);
+    color: #fff !important;
+}
+
+.legacy-admin button.legacy-users-passwords-toggle:hover {
+    background: var(--legacy-admin-green-950);
+    color: #fff !important;
+}
+
+.legacy-users-username {
+    font-size: 12px;
+}
+
+.legacy-password-control {
+    display: grid;
+    grid-template-columns: minmax(74px, 1fr) auto;
+    width: 100%;
+    gap: 6px;
+}
+
+.legacy-password-control input {
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    padding: 6px 8px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 8px;
+    background: #f7faf9;
+    color: var(--legacy-admin-ink);
+    font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.legacy-password-control button {
+    min-height: 34px;
+    padding: 6px 8px;
+    border: 1px solid var(--legacy-admin-line);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--legacy-admin-green-800);
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.legacy-password-control button:hover {
+    border-color: var(--legacy-admin-green-700);
+    background: var(--legacy-admin-green-100);
+}
+
+.legacy-password-status {
+    display: inline-flex;
+    min-height: 28px;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: #f0f4f2;
+    color: var(--legacy-admin-muted);
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.legacy-users-no-results {
+    margin-top: 12px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.legacy-admin .modal {
+    font-size: 14px;
+}
+
+@media (min-width: 901px) {
+    .legacy-admin .legacy-table-scroll--student-roster {
+        overflow-x: auto;
+    }
+
+    .legacy-admin .legacy-table-scroll > table.legacy-student-roster {
+        width: 100% !important;
+        min-width: 1540px;
+        font-size: clamp(9.5px, .68vw, 12px) !important;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr > td,
+    .legacy-admin table.legacy-student-roster > tbody > tr > th {
+        height: 38px !important;
+        padding: 5px 6px !important;
+    }
+
+    .legacy-admin table.legacy-student-roster input[type="checkbox"],
+    .legacy-admin table.legacy-student-roster input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .legacy-admin table.legacy-student-roster select {
+        min-width: 56px;
+        min-height: 28px;
+        padding: 3px 22px 3px 5px;
+        font-size: 10px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    body.legacy-admin {
+        min-height: 100dvh;
+        background: #fff !important;
+        font-size: 15px !important;
+    }
+
+    .legacy-admin > div[align="center"] > table#AutoNumber1 {
+        width: 100% !important;
+        min-height: 0;
+        margin: 0;
+        border: 0 !important;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .legacy-admin-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding-top: env(safe-area-inset-top);
+        box-shadow: 0 6px 20px rgba(15, 47, 42, .2);
+    }
+
+    .legacy-admin-header__main {
+        flex-wrap: wrap;
+        min-height: 0;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .legacy-admin-context {
+        order: 3;
+        width: 100%;
+        padding: 8px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, .14);
+        border-left: 0;
+    }
+
+    .legacy-admin-centre-switcher {
+        min-width: 0;
+    }
+
+    .legacy-admin-user__copy {
+        display: none;
+    }
+
+    .legacy-admin-action,
+    .legacy-admin-nav a {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .legacy-admin-nav {
+        gap: 4px;
+        padding: 0 10px 9px;
+        scrollbar-width: none;
+        scroll-snap-type: inline proximity;
+    }
+
+    .legacy-admin-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .legacy-admin-nav a {
+        padding: 9px 13px;
+        font-size: 13px;
+        scroll-snap-align: start;
+    }
+
+    .legacy-admin-login {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .legacy-admin-login label {
+        flex: 1 1 130px;
+    }
+
+    .legacy-admin-login input {
+        width: 100%;
+    }
+
+    .legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__content-cell {
+        padding: 12px !important;
+    }
+
+    .legacy-admin table.legacy-module-menu tr.legacy-module-menu__row {
+        grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+    }
+
+    .legacy-module-page__heading {
+        display: grid;
+        align-items: start;
+    }
+
+    .legacy-module-page__meta {
+        min-width: 0;
+    }
+
+    .legacy-aula-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-search-panel {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .legacy-search-panel fieldset {
+        min-width: 0;
+    }
+
+    .legacy-results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .legacy-results-heading > div {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .legacy-search-panel > button,
+    .legacy-search-panel > input[type="button"],
+    .legacy-search-panel > input[type="submit"] {
+        width: 100%;
+    }
+
+    .legacy-data-table-wrap--cards,
+    .legacy-responsive-list-wrap {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+    }
+
+    .legacy-admin table.legacy-responsive-list,
+    .legacy-admin table.legacy-responsive-list > tbody {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    .legacy-admin table.legacy-responsive-list > thead,
+    .legacy-admin table.legacy-responsive-list > colgroup {
+        display: none;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr {
+        display: grid;
+        width: 100%;
+        min-width: 0;
+        align-content: start;
+        overflow: hidden;
+        border: 1px solid var(--legacy-admin-line);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 7px 20px rgba(22, 55, 49, .06);
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr[hidden] {
+        display: none;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td {
+        display: grid;
+        width: 100% !important;
+        min-width: 0;
+        grid-template-columns: minmax(112px, 36%) minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px !important;
+        border: 0 !important;
+        border-bottom: 1px solid #e8eeec !important;
+        background: #fff;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+        text-align: left !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td::before {
+        content: attr(data-label);
+        color: var(--legacy-admin-muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .035em;
+        line-height: 1.25;
+        text-transform: uppercase;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td:first-child,
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td.legacy-responsive-list__primary {
+        padding-block: 13px !important;
+        background: #f4f8f6;
+        font-size: 14px;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td:last-child {
+        border-bottom: 0 !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr:hover > td {
+        background: inherit;
+    }
+
+    .legacy-users-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .legacy-users-search,
+    .legacy-users-passwords-toggle {
+        width: 100%;
+    }
+
+    .legacy-users-search__controls {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .legacy-users-page .legacy-results-heading > .legacy-card-action {
+        width: 100%;
+    }
+
+    .legacy-users-table-wrap {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+    }
+
+    .legacy-admin table.legacy-users-table,
+    .legacy-admin table.legacy-users-table > tbody {
+        display: block;
+        width: 100% !important;
+    }
+
+    .legacy-users-table colgroup,
+    .legacy-users-table thead {
+        display: none;
+    }
+
+    .legacy-users-table tbody {
+        display: grid !important;
+        gap: 12px;
+    }
+
+    .legacy-users-table tbody tr {
+        display: grid;
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid var(--legacy-admin-line);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 7px 20px rgba(22, 55, 49, .06);
+    }
+
+    .legacy-users-table tbody tr[hidden] {
+        display: none;
+    }
+
+    .legacy-admin table.legacy-users-table tbody td {
+        display: grid;
+        width: 100%;
+        grid-template-columns: minmax(104px, 34%) minmax(0, 1fr);
+        align-items: center;
+        padding: 10px 12px;
+        gap: 10px;
+        border-bottom: 1px solid #e8eeec;
+    }
+
+    .legacy-users-table tbody td::before {
+        content: attr(data-label);
+        color: var(--legacy-admin-muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .03em;
+        text-transform: uppercase;
+    }
+
+    .legacy-users-table tbody td:first-child {
+        align-items: start;
+        padding-block: 14px;
+        background: #f7faf9;
+    }
+
+    .legacy-users-table tbody td:last-child {
+        border-bottom: 0;
+    }
+
+    .legacy-users-table .legacy-data-table__actions a {
+        margin: 0 4px 4px 0;
+        text-align: center;
+    }
+
+    .legacy-admin .legacy-table-scroll:not(.legacy-table-scroll--student-roster)::before {
+        content: "Desliza horizontalmente para ver todas las columnas";
+        position: sticky;
+        left: 0;
+        display: block;
+        width: max-content;
+        max-width: calc(100vw - 24px);
+        margin: 0 0 7px;
+        padding: 6px 9px;
+        border-radius: 7px;
+        background: #eef5f2;
+        color: var(--legacy-admin-muted);
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .legacy-admin .legacy-table-scroll--student-roster {
+        overflow: visible;
+    }
+
+    .legacy-admin .legacy-family-table-scroll {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+    }
+
+    .legacy-admin .legacy-family-table-scroll .legacy-family-table--header {
+        display: none;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table,
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table + table {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+        overflow: hidden;
+        border: 1px solid var(--legacy-admin-line) !important;
+        border-radius: 13px;
+        background: #fff;
+        box-shadow: 0 5px 16px rgba(22, 55, 49, .06);
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table > tbody,
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table > tbody > tr {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table > tbody > tr > td {
+        display: grid;
+        width: 100% !important;
+        height: auto;
+        min-height: 62px;
+        padding: 8px 10px !important;
+        align-content: start;
+        gap: 3px;
+        border: 0 !important;
+        border-bottom: 1px solid #e8eeec !important;
+        overflow-wrap: anywhere;
+        text-align: left !important;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table > tbody > tr > td::before {
+        content: attr(data-label);
+        color: var(--legacy-admin-muted);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario .legacy-family-table__name {
+        grid-column: 1 / -1;
+        background: #eef5f2 !important;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario .legacy-family-table__name input[readonly] {
+        display: none;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario .legacy-family-table__name::after {
+        content: attr(data-value);
+        color: var(--legacy-admin-ink);
+        font-size: 14px;
+        font-weight: 750;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario .legacy-family-table__action {
+        min-height: 48px;
+        align-content: center;
+    }
+
+    .legacy-admin table.legacy-student-roster,
+    .legacy-admin table.legacy-student-roster > tbody {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+    }
+
+    .legacy-admin table.legacy-student-roster {
+        border: 0 !important;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__head {
+        display: none !important;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__info,
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__totals {
+        display: block !important;
+        width: 100%;
+        margin: 0 0 10px;
+        overflow: hidden;
+        border: 1px solid var(--legacy-admin-line);
+        border-radius: 12px;
+        background: #f3f7f5;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__info > td,
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__totals > td {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 12px !important;
+        white-space: normal;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student {
+        display: grid !important;
+        width: 100%;
+        margin: 0 0 12px;
+        overflow: hidden;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border: 1px solid var(--legacy-admin-line);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 6px 18px rgba(22, 55, 49, .07);
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td {
+        display: grid !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 58px;
+        padding: 8px 10px !important;
+        align-content: start;
+        gap: 3px;
+        border: 0 !important;
+        border-bottom: 1px solid #e8eeec !important;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td:nth-child(odd) {
+        border-right: 1px solid #e8eeec !important;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td::before {
+        content: attr(data-label);
+        color: var(--legacy-admin-muted);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td.legacy-student-roster__order {
+        display: none !important;
+    }
+
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__name,
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__actions {
+        grid-column: 1 / -1;
+        min-width: 0;
+    }
+
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__name {
+        min-height: 52px;
+        background: #eef5f2 !important;
+        color: var(--legacy-admin-green-800);
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td.legacy-student-roster__actions {
+        display: flex !important;
+        min-height: 48px;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__actions::before {
+        width: 100%;
+    }
+
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__actions a {
+        display: inline-flex;
+        min-width: 32px;
+        min-height: 32px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .legacy-admin input[type="text"],
+    .legacy-admin input[type="password"],
+    .legacy-admin input[type="email"],
+    .legacy-admin input[type="number"],
+    .legacy-admin input[type="date"],
+    .legacy-admin input[type="search"],
+    .legacy-admin select,
+    .legacy-admin textarea {
+        min-height: 44px;
+        font-size: 16px !important;
+    }
+
+    .legacy-admin input[type="button"],
+    .legacy-admin input[type="submit"],
+    .legacy-admin input[type="reset"],
+    .legacy-admin button {
+        min-height: 44px;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 680px) {
+    .legacy-admin-header__main {
+        display: grid;
+        grid-template-columns: minmax(92px, 1fr) auto auto;
+        align-items: stretch;
+        gap: 8px;
+        padding: 9px 10px;
+    }
+
+    .legacy-admin-brand {
+        min-width: 0;
+        margin-right: auto;
+    }
+
+    .legacy-admin-brand img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .legacy-admin-brand strong {
+        font-size: 16px;
+    }
+
+    .legacy-admin-brand small {
+        display: none;
+    }
+
+    .legacy-admin-header__main > .global-search {
+        grid-column: 2;
+        margin-left: 0;
+    }
+
+    .legacy-admin-user {
+        grid-column: 3;
+        width: auto;
+        margin-left: auto;
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .legacy-admin-user > .legacy-admin-avatar,
+    .legacy-admin-user > .legacy-admin-action:not(.help-trigger):not(.legacy-admin-action--logout) {
+        display: none;
+    }
+
+    .legacy-admin-user .legacy-admin-action {
+        min-width: 44px;
+        padding: 7px 9px;
+    }
+
+    .legacy-admin-context {
+        grid-column: 1 / -1;
+        width: 100%;
+        padding-top: 7px;
+    }
+
+    .legacy-admin-action {
+        flex: 1 1 0;
+        text-align: center;
+    }
+
+    .legacy-admin-nav {
+        padding-inline: 10px;
+    }
+
+    .legacy-admin > div[align="center"] > table#AutoNumber1.legacy-admin-shell .legacy-admin-shell__content-cell {
+        padding: 10px !important;
+    }
+
+    .legacy-admin table.legacy-module-menu > tbody {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin table.legacy-module-menu tr.legacy-module-menu__row {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin table.legacy-module-menu tr.legacy-module-menu__row > td:not(:first-child) {
+        padding: 0 14px 14px !important;
+    }
+
+    .legacy-module-page__heading {
+        gap: 12px;
+        margin-bottom: 16px;
+        padding-bottom: 14px;
+    }
+
+    .legacy-module-page__heading h1 {
+        font-size: 25px;
+    }
+
+    .legacy-heading-action {
+        width: 100%;
+        text-align: center;
+    }
+
+    .legacy-aula-card__actions {
+        flex-direction: column;
+    }
+
+    .legacy-admin .legacy-responsive-form > tbody > tr {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin .legacy-responsive-form > tbody > tr > td {
+        width: 100% !important;
+        height: auto !important;
+        text-align: left !important;
+    }
+
+    .legacy-admin .legacy-responsive-form input[type="text"],
+    .legacy-admin .legacy-responsive-form input[type="email"],
+    .legacy-admin .legacy-responsive-form input[type="password"],
+    .legacy-admin .legacy-responsive-form select,
+    .legacy-admin .legacy-responsive-form textarea {
+        width: 100% !important;
+    }
+
+    .legacy-admin table.legacy-student-family-editor,
+    .legacy-admin table.legacy-student-family-editor > tbody {
+        display: block;
+        width: 100% !important;
+    }
+
+    .legacy-admin table.legacy-student-family-editor > tbody > tr {
+        display: grid;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .legacy-admin table.legacy-student-family-editor > tbody > tr > td,
+    .legacy-admin table.legacy-student-family-editor > tbody > tr > td[rowspan] {
+        display: block;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box;
+    }
+
+    .legacy-admin .legacy-family-table-region {
+        overflow: hidden;
+    }
+
+    .legacy-admin .legacy-family-table-scroll {
+        display: block;
+        width: 100% !important;
+        min-width: 0;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario > table > tbody > tr {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin .legacy-family-table-scroll #tablaformulario .legacy-family-table__name {
+        grid-column: auto;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-admin table.legacy-student-roster > tbody > tr.legacy-student-roster__student > td {
+        border-right: 0 !important;
+    }
+
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__name,
+    .legacy-admin table.legacy-student-roster .legacy-student-roster__actions {
+        grid-column: auto;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td {
+        grid-template-columns: minmax(105px, 34%) minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .legacy-aula-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media print {
+    .legacy-admin-header {
+        display: none !important;
+    }
+
+    .legacy-simplified-list--print .legacy-search-panel,
+    .legacy-simplified-list--print .legacy-module-page__meta,
+    .legacy-simplified-list--print .legacy-results-heading .legacy-card-action {
+        display: none !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list {
+        display: table !important;
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > thead {
+        display: table-header-group !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody {
+        display: table-row-group !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr {
+        display: table-row !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td {
+        display: table-cell !important;
+        border: 1px solid #d9e3e0 !important;
+        padding: 6px 7px !important;
+        font-size: 9pt !important;
+    }
+
+    .legacy-admin table.legacy-responsive-list > tbody > tr > td::before {
+        display: none !important;
+    }
+
+    body.legacy-admin,
+    .legacy-admin > div[align="center"] > table#AutoNumber1 {
+        margin: 0 !important;
+        border: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+}
+
+.legacy-class-snack-cell {
+    padding: 14px 24px 6px !important;
+    background: #fff !important;
+}
+
+.legacy-class-snack {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    width: min(920px, 100%);
+    margin: 0 auto;
+    padding: 14px;
+    border: 1px solid #cbded9;
+    border-radius: 14px;
+    background: #f4faf8;
+    box-sizing: border-box;
+    color: #0b4238;
+    text-align: left;
+}
+
+.legacy-class-snack.is-disabled {
+    border-color: #efc3bd;
+    background: #fff6f4;
+    color: #7b2d24;
+}
+
+.legacy-class-snack__icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: #dceee9;
+    color: #0b594d;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.legacy-class-snack.is-disabled .legacy-class-snack__icon {
+    background: #f7d9d4;
+    color: #a43f32;
+}
+
+.legacy-class-snack__content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 3px;
+    line-height: 1.35;
+}
+
+.legacy-class-snack__content strong {
+    font-size: 15px;
+}
+
+.legacy-class-snack__content span,
+.legacy-class-snack__content small {
+    color: #526c66;
+    font-size: 12px;
+}
+
+.legacy-class-snack__button {
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #b54435;
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.legacy-class-snack.is-disabled .legacy-class-snack__button {
+    background: #176d5e;
+}
+
+.legacy-class-snack__button:disabled {
+    cursor: wait;
+    opacity: .65;
+}
+
+@media (max-width: 700px) {
+    .legacy-class-snack-cell {
+        padding: 10px !important;
+    }
+
+    .legacy-class-snack {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 10px;
+        width: calc(100vw - 20px) !important;
+        max-width: calc(100vw - 20px);
+        margin-right: 0;
+        margin-left: 0;
+        padding: 12px;
+    }
+
+    .legacy-class-snack__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .legacy-class-snack__button {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 48px;
+        font-size: 14px;
+    }
+}
+
+@media print {
+    .legacy-class-snack-cell {
+        display: none !important;
+    }
+}
+.legacy-password-help { margin:12px 0 18px; padding:16px 20px; border:1px solid #d5e5dd; border-radius:12px; background:#eef6f1; color:#244e40; text-align:left; }
+.legacy-password-help[hidden] { display:none!important; }
+.legacy-password-help p { margin:7px 0 0; line-height:1.6; }
+.legacy-password-help form { margin-top:16px; }
+.legacy-password-help label { display:block; margin-bottom:6px; font-weight:700; }
+.legacy-password-confirm { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.legacy-password-confirm input { min-width:0; width:280px; max-width:100%; }
+.legacy-password-help .legacy-password-confirm button.legacy-card-action { flex:0 0 auto; width:auto!important; color:#fff!important; }
+.legacy-password-reveal { display:block; margin-top:8px; padding:8px; border:1px solid #cadcd5; border-radius:6px; background:#fff; color:#17322e; font-family:monospace; white-space:pre-wrap; overflow-wrap:anywhere; user-select:text; }
+.legacy-password-reveal[hidden] { display:none!important; }
+@media print { .legacy-password-help, .legacy-password-reveal { display:none!important; } }

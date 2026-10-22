@@ -1,0 +1,3 @@
+# phpBB 3.0.7-PL1 esta fuera de soporte y no forma parte de la interfaz actual.
+# Se conserva para una posible migracion, pero no debe aceptar peticiones web.
+Require all denied

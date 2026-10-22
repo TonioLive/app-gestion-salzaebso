@@ -1,0 +1,95 @@
+<?php
+require_once __DIR__ . '/../../configuracion/encoding.php';
+require("../../configuracion/config.php");
+require("../../configuracion/autentifica.php");
+
+$id_prueba=$_POST["id_prueba"];
+$id_alumno=$_POST["id_alumno"];
+$accion_despues=$_POST["accion_despues"];
+
+$observaciones_prueba=$_POST["observaciones_prueba"];
+if (strlen($observaciones_prueba)!=0) {
+                $observaciones_prueba=app_url_text_utf8($observaciones_prueba);
+                }
+                
+$fecha_dia=$_POST["fecha_dia"];
+$fecha_mes=$_POST["fecha_mes"];
+$fecha_ano=$_POST["fecha_ano"];
+
+$fecha=$fecha_ano."-".$fecha_mes."-".$fecha_dia;
+
+// Calcula edad real el día de la prueba
+
+        $consulta_datos_usuario=db_query("SELECT * FROM usuarios WHERE id_usuario=".$id_alumno) or die(db_error());
+
+        $datos_usuario=db_fetch_array($consulta_datos_usuario);
+
+                // 1. Comprueba la edad restando el año de nacimiento al año actual
+                $fecha_l=$datos_usuario["fecha_nacimiento"];
+                $edad_a_l=(intval($fecha_ano)-date("Y",strtotime($fecha_l)));
+
+                // 1.1. Cacula edad con decimales
+                $mes_d_l=date("m",strtotime($fecha_l));
+                $mes_d_n=intval($fecha_mes);
+                $dif_meses=$mes_d_n-$mes_d_l;
+
+                $edad_d_l=($edad_a_l*12)+$dif_meses;
+                $edad_real=$edad_d_l;
+                
+                $dia_l=date("j",strtotime($fecha_l));
+                if (intval($fecha_dia)<$dia_l) {
+                        $edad_real=$edad_real-1;
+                        }
+                if ($edad_real<0) {
+                        $edad_real=0;
+                        }
+
+$hora=$_POST["hora_hora"].":".$_POST["hora_min"].":00";
+
+$actualiza_mcarthy=db_query("UPDATE pruebas_mcarthy SET er='$edad_real', fecha='$fecha', hora='$hora', observaciones_prueba='$observaciones_prueba' WHERE id_prueba=$id_prueba") or die(db_error()."-1");
+
+if ($zona_corregir_pruebas==1) {
+        $correccion_p=$_POST["correccion_p"];
+        $correccion_c=$_POST["correccion_c"];
+        $correccion_l=$_POST["correccion_l"];
+        $correccion_em=$_POST["correccion_em"];
+        $actualiza_mcarthy=db_query("UPDATE pruebas_mcarthy SET correccion_p='$correccion_p', correccion_c='$correccion_c', correccion_l='$correccion_l', correccion_em='$correccion_em' WHERE id_prueba=$id_prueba") or die(db_error()."-1");
+        }
+
+// Inserta resultados
+$busca_items_mcarthy=db_query("SELECT * FROM pruebas_mcarthy_items");
+while($items_mcarthy=db_fetch_array($busca_items_mcarthy)) {
+
+        $id_item_actual=$items_mcarthy["id_item"];
+
+        $item_actual_dato1=$_POST["dato_".$id_item_actual."_1"];
+        $item_actual_dato2=$_POST["dato_".$id_item_actual."_2"];
+        $item_actual_dato3=$_POST["dato_".$id_item_actual."_3"];
+        $item_actual_dato4=$_POST["dato_".$id_item_actual."_4"];
+        $item_actual_dato5=$_POST["dato_".$id_item_actual."_5"];
+        $item_actual_respuesta=$_POST["respuesta_".$id_item_actual];
+        $item_actual_verdaderofalso=$_POST["verdaderofalso_".$id_item_actual];
+        $item_actual_lateralidad=$_POST["lateralidad_".$id_item_actual];
+        $item_actual_observaciones=$_POST["observaciones_".$id_item_actual];
+
+        // Comprueba si esta
+        $busca_respuesta_item=db_query("SELECT * FROM pruebas_mcarthy_respuestas WHERE id_prueba=$id_prueba AND id_item=".$items_mcarthy["id_item"]) or die(db_error()."-1");
+        if (db_num_rows($busca_respuesta_item)!=0) {
+                $respuestas_items_mcarthy=db_fetch_array($busca_respuesta_item);
+                $actualiza_item=db_query("UPDATE pruebas_mcarthy_respuestas SET dato1='$item_actual_dato1',dato2='$item_actual_dato2',dato3='$item_actual_dato3',dato4='$item_actual_dato4',dato5='$item_actual_dato5',respuesta='$item_actual_respuesta',verdaderofalso='$item_actual_verdaderofalso',lateralidad='$item_actual_lateralidad',observaciones='$item_actual_observaciones' WHERE id_respuesta=".$respuestas_items_mcarthy["id_respuesta"]) or die(db_error()."-1");
+                } else {
+                $inserta_item=db_query("INSERT INTO pruebas_mcarthy_respuestas (id_prueba,id_item,dato1,dato2,dato3,dato4,dato5,respuesta,verdaderofalso,lateralidad,observaciones) VALUES ('$id_prueba','".$items_mcarthy["id_item"]."','$item_actual_dato1','$item_actual_dato2','$item_actual_dato3','$item_actual_dato4','$item_actual_dato5','$item_actual_respuesta','$item_actual_verdaderofalso','$item_actual_lateralidad','$item_actual_observaciones');") or die(db_error()."-1");
+                }
+        }
+                        
+
+if ($accion_despues==0) {
+        $url_retorno="resultado_mcarthy.php?id_prueba=".$id_prueba."&id_alumno=".$id_alumno;
+        } else {
+        $url_retorno="seguimiento.php?id_alumno=".$id_alumno;
+        }
+        
+                        
+        
+header("Location: ".$url_retorno);
+?>

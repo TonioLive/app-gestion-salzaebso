@@ -1,0 +1,287 @@
+.message-notifications {
+    position: relative;
+    flex: 0 0 auto;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.message-notifications__trigger {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid #d8e4e0;
+    border-radius: 13px;
+    background: #fff;
+    color: var(--brand, #21675a);
+    cursor: pointer;
+}
+
+.message-notifications__trigger:hover,
+.message-notifications__trigger[aria-expanded="true"] {
+    border-color: var(--brand, #21675a);
+    background: var(--brand-soft, #e7f2ef);
+}
+
+.message-notifications__trigger svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.message-notifications__badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: #db4c4c;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 850;
+    line-height: 1;
+}
+
+.message-notifications__panel {
+    position: absolute;
+    z-index: 10010;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(390px, calc(100vw - 24px));
+    overflow: hidden;
+    border: 1px solid #d5e2de;
+    border-radius: 18px;
+    background: #fff;
+    color: #173e37;
+    box-shadow: 0 24px 65px rgba(18, 52, 46, .22);
+}
+
+.message-notifications__panel > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 15px 16px;
+    border-bottom: 1px solid #e5ecea;
+    background: #f6faf8;
+}
+
+.message-notifications__panel > header > span {
+    display: grid;
+    gap: 2px;
+}
+
+.message-notifications__panel header strong {
+    color: #153d36;
+    font-size: .88rem;
+}
+
+.message-notifications__panel header small {
+    color: #71827d;
+    font-size: .68rem;
+}
+
+.message-notifications__panel header a,
+.message-notifications__panel footer a {
+    color: var(--brand, #21675a);
+    font-size: .7rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.message-notifications__list {
+    max-height: min(430px, 60vh);
+    overflow-y: auto;
+}
+
+.message-notifications__item {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    min-height: 72px;
+    padding: 10px 13px;
+    border-bottom: 1px solid #edf2f0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.message-notifications__item:hover {
+    background: var(--brand-soft, #e7f2ef);
+}
+
+.message-notifications__avatar {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--brand-soft, #e7f2ef);
+    color: var(--brand-dark, #154e45);
+    font-size: .74rem;
+    font-weight: 850;
+}
+
+.message-notifications__copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.message-notifications__copy strong,
+.message-notifications__copy span,
+.message-notifications__copy small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.message-notifications__copy strong {
+    font-size: .78rem;
+}
+
+.message-notifications__copy span {
+    color: #536a64;
+    font-size: .7rem;
+}
+
+.message-notifications__copy small {
+    color: #83918d;
+    font-size: .63rem;
+}
+
+.message-notifications__quantity {
+    display: grid;
+    place-items: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--brand, #21675a);
+    color: var(--primary-contrast, #fff);
+    font-size: .65rem;
+    font-weight: 850;
+}
+
+.message-notifications__empty {
+    padding: 30px 20px;
+    color: #6d807a;
+    font-size: .78rem;
+    text-align: center;
+}
+
+.message-notifications__panel footer {
+    padding: 11px 16px;
+    background: #fbfcfc;
+    text-align: center;
+}
+
+.message-notification-toast {
+    position: fixed;
+    z-index: 12000;
+    top: 82px;
+    right: 22px;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    width: min(360px, calc(100vw - 24px));
+    padding: 12px;
+    border: 1px solid #d4e3de;
+    border-radius: 16px;
+    background: #fff;
+    color: #173e37;
+    box-shadow: 0 20px 55px rgba(18, 52, 46, .2);
+    animation: message-toast-in .24s ease both;
+}
+
+.message-notification-toast__icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--brand-soft, #e7f2ef);
+    color: var(--brand-dark, #154e45);
+    font-weight: 900;
+}
+
+.message-notification-toast__copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.message-notification-toast__copy strong {
+    font-size: .78rem;
+}
+
+.message-notification-toast__copy span {
+    overflow: hidden;
+    color: #60746e;
+    font-size: .69rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.message-notification-toast a {
+    color: var(--brand, #21675a);
+    font-size: .69rem;
+    font-weight: 850;
+    text-decoration: none;
+}
+
+@keyframes message-toast-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message-notifications--legacy .message-notifications__trigger {
+    border-color: rgba(255, 255, 255, .24);
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+}
+
+.message-notifications--legacy .message-notifications__trigger:hover,
+.message-notifications--legacy .message-notifications__trigger[aria-expanded="true"] {
+    background: rgba(255, 255, 255, .16);
+}
+
+.message-notifications--legacy .message-notifications__badge {
+    border-color: #164d43;
+}
+
+@media (max-width: 720px) {
+    .message-notifications__panel {
+        position: fixed;
+        top: 70px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-height: calc(100dvh - 86px);
+    }
+
+    .message-notification-toast {
+        top: auto;
+        right: 10px;
+        bottom: max(16px, env(safe-area-inset-bottom));
+        left: 10px;
+        width: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .message-notification-toast {
+        animation: none;
+    }
+}

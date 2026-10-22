@@ -1,0 +1,43 @@
+body {
+	background: #444;
+	font-family: "Trebuchet MS", Tahoma, Verdana, Arial;
+	color: #000;
+}
+
+h1 a {
+	font-size: 22pt;
+	color: #222;
+}
+
+h1 a:hover {
+	color: #fff;
+}
+
+h4 {
+	font-size: 15pt;
+	text-align: center;
+	color: #552222;
+}
+
+a {
+	color: #66839A;
+	text-decoration: none;
+}
+
+
+#header {
+	width: 780px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#footer {
+text-align:center;
+font-size: 10pt;
+	
+}
+
+#map {
+	margin: 0 auto;
+	
+}

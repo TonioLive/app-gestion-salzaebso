@@ -1,0 +1,154 @@
+.table-pagination {
+    --pagination-ink: var(--legacy-admin-ink, var(--ink, #17322e));
+    --pagination-muted: var(--legacy-admin-muted, var(--muted, #60736f));
+    --pagination-line: var(--legacy-admin-line, var(--line, #d9e3e0));
+    --pagination-brand: var(--legacy-admin-green-700, var(--primary-dark, #21675a));
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 12px 0 2px;
+    padding: 10px 12px;
+    border: 1px solid var(--pagination-line);
+    border-radius: 13px;
+    color: var(--pagination-ink);
+    background: #fff;
+    font: 600 12px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    box-sizing: border-box;
+}
+
+.table-pagination *,
+.table-pagination *::before,
+.table-pagination *::after {
+    box-sizing: border-box;
+}
+
+.table-pagination__size,
+.table-pagination__size label,
+.table-pagination__pages {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+}
+
+.table-pagination__size span,
+.table-pagination__summary {
+    color: var(--pagination-muted);
+}
+
+.table-pagination select {
+    width: auto !important;
+    min-width: 64px;
+    min-height: 36px;
+    margin: 0 !important;
+    padding: 6px 26px 6px 9px !important;
+    border: 1px solid var(--pagination-line) !important;
+    border-radius: 9px !important;
+    color: var(--pagination-ink) !important;
+    background-color: #fff !important;
+    font: inherit !important;
+}
+
+.table-pagination__pages a,
+.table-pagination__pages button,
+.table-pagination__pages span {
+    display: inline-grid;
+    min-width: 36px;
+    min-height: 36px;
+    margin: 0 !important;
+    padding: 5px;
+    place-items: center;
+    border: 1px solid var(--pagination-line);
+    border-radius: 9px;
+    color: var(--pagination-ink) !important;
+    background: #fff;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.table-pagination__pages a:hover,
+.table-pagination__pages button:hover,
+.table-pagination__pages a.is-current,
+.table-pagination__pages button.is-current {
+    border-color: var(--pagination-brand);
+    color: #fff !important;
+    background: var(--pagination-brand);
+}
+
+.table-pagination__pages a.is-disabled,
+.table-pagination__pages button.is-disabled {
+    pointer-events: none;
+    opacity: .38;
+}
+
+.table-pagination__pages .table-pagination__ellipsis {
+    min-width: 22px;
+    border-color: transparent;
+}
+
+.table-pagination-row-hidden {
+    display: none !important;
+}
+
+@media (max-width: 720px) {
+    .table-pagination {
+        flex-wrap: wrap;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .table-pagination__summary {
+        order: -1;
+        width: 100%;
+    }
+
+    .table-pagination__size {
+        flex: 1 1 auto;
+    }
+
+    .table-pagination__size span {
+        font-size: 11px;
+    }
+
+    .table-pagination__pages {
+        max-width: 100%;
+        margin-left: auto;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .table-pagination__pages::-webkit-scrollbar {
+        display: none;
+    }
+
+    .table-pagination__pages a,
+    .table-pagination__pages button,
+    .table-pagination__pages span {
+        min-width: 38px;
+        min-height: 38px;
+    }
+}
+
+@media (max-width: 430px) {
+    .table-pagination__size,
+    .table-pagination__pages {
+        width: 100%;
+    }
+
+    .table-pagination__pages {
+        justify-content: center;
+    }
+}
+
+@media print {
+    .table-pagination {
+        display: none !important;
+    }
+
+    tr.table-pagination-row-hidden {
+        display: table-row !important;
+    }
+}

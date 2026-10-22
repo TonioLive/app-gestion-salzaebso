@@ -1,0 +1,76 @@
+/* Keep wide data inside one scroll region, including in legacy table layouts. */
+.legacy-admin .contacts-table-scroll,
+.legacy-admin .classrooms-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    contain: inline-size;
+    overflow-x: auto;
+    text-align: left;
+}
+
+.legacy-admin .contacts-table-scroll > table {
+    width: 100% !important;
+    min-width: 1100px;
+    max-width: none;
+}
+
+.legacy-admin .classrooms-panel {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 0;
+}
+
+.legacy-admin .classrooms-panel h1,
+.legacy-admin .contacts-title {
+    margin: 0 0 16px;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.legacy-admin .classrooms-table-scroll > table {
+    width: 100% !important;
+    min-width: 1000px;
+    max-width: none;
+}
+
+.legacy-admin .classrooms-panel input[type="button"],
+.legacy-admin .classrooms-statistics {
+    max-width: 100%;
+    height: auto;
+    white-space: normal;
+}
+
+.legacy-admin .contacts-page > center > .row {
+    margin-inline: 0;
+}
+
+.legacy-admin .contacts-page .text-right .btn {
+    max-width: 100%;
+    margin-block: 4px;
+    white-space: normal;
+}
+
+.legacy-admin .contacts-table-scroll:focus-visible,
+.legacy-admin .classrooms-table-scroll:focus-visible {
+    outline: 2px solid var(--legacy-admin-green-700);
+    outline-offset: 2px;
+}
+
+.legacy-admin .contacts-table-scroll::before,
+.legacy-admin .classrooms-table-scroll::before {
+    text-align: left;
+    white-space: normal;
+}
+
+@media print {
+    .legacy-admin .contacts-table-scroll,
+    .legacy-admin .classrooms-table-scroll {
+        contain: none;
+        overflow: visible;
+    }
+    .legacy-admin .contacts-table-scroll > table,
+    .legacy-admin .classrooms-table-scroll > table {
+        min-width: 0;
+    }
+}

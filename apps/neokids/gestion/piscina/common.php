@@ -1,0 +1,15 @@
+<?php
+require_once dirname(dirname(__DIR__)).'/configuracion/config.php';
+require_once dirname(dirname(__DIR__)).'/configuracion/pool-planning.php';
+require_once __DIR__.'/admin-access.php';
+if (!$permitido) {header('Location: /index.php');exit;}
+$poolAccess=app_rows("SELECT u.nivel_acceso,u.zona_aulas,u.zona_mensajes,u.zona_inferior FROM usuarios u WHERE u.id_usuario=? AND u.usuario<>'' AND u.pass<>'' AND u.nivel_acceso IN (2,3,4,10,11) AND EXISTS(SELECT 1 FROM personal_contratos c WHERE c.id_empleado=u.id_usuario AND (c.fecha_fin>=CURDATE() OR c.fecha_fin='0000-00-00' OR c.fecha_fin IS NULL OR c.fecha_inicio>CURDATE()))",'i',array((int)$idUsuario));
+if(!$poolAccess){$_SESSION=array();http_response_code(403);exit('Tu cuenta ya no tiene acceso. Vuelve a iniciar sesión.');}
+foreach($poolAccess[0] as $poolPermission=>$poolValue){$GLOBALS[$poolPermission]=(int)$poolValue;$_SESSION[$poolPermission]=(int)$poolValue;}unset($poolAccess,$poolPermission,$poolValue);
+function pool_require($permission) {if(!app_can($permission)){http_response_code(403);exit('No tienes acceso a esta sección.');}}
+function pool_header($title,$active) {
+    header('Content-Type: text/html; charset=UTF-8');
+    ?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title><?php echo app_escape($title); ?> · Neo Kids</title><link rel="stylesheet" href="/app/assets/pool.css?v=20260923"><link rel="stylesheet" href="/gestion/piscina/piscina.css?v=20260924"><?php if($active==='grupos'){ ?><link rel="stylesheet" href="/gestion/piscina/calendar.css?v=20260930-3"><?php } if($active==='estado'){ ?><link rel="manifest" href="/gestion/piscina/manifest.webmanifest"><meta name="theme-color" content="#075985"><link rel="stylesheet" href="/gestion/piscina/estado.css?v=20260928-3"><?php } ?></head><body class="pool-admin"><header class="family-header"><a class="brand" href="/"><span class="symbol">≈</span><span>Neo Kids<small>Gestión de piscina</small></span></a><a class="quiet" href="/">← Inicio</a></header><nav class="admin-nav" aria-label="Gestión de piscina"><?php foreach(array('grupos'=>array('Grupos y horarios','zona_aulas'),'avisos'=>array('Avisos a familias','zona_mensajes'),'estado'=>array('Estado de piscina','zona_inferior')) as $key=>$item){if($key==='estado'?(int)$GLOBALS['nivel_acceso']!==4:($key==='grupos'?!pool_staff_groups():!app_can($item[1])))continue; ?><a href="/gestion/piscina/<?php echo $key; ?>.php" <?php if($active===$key)echo 'aria-current="page"'; ?>><?php echo $item[0]; ?></a><?php } ?></nav><main class="admin-main"><div class="section-title"><div><span class="eyebrow">Tu piscina, en marcha</span><h1><?php echo app_escape($title); ?></h1></div></div><?php
+}
+function pool_footer(){echo '</main><footer class="admin-footer">Neo Kids · Área de personal</footer></body></html>';}
+function pool_error($message){http_response_code(422);pool_header('Revisa los datos','grupos');echo '<p class="alert">'.app_escape($message).'</p><a class="quiet" href="/gestion/piscina/grupos.php">Volver a los grupos</a>';pool_footer();exit;}

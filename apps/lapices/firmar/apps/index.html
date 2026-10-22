@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Firma</title>
+    
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>   
+	
+	<script src="sketch.js"></script>
+	
+    <style type='text/css'>
+	  canvas {
+        width: 800px;
+        height: 300px;
+        border: 1px solid #ccc;
+      }
+    </style>	
+	
+  </head>
+  <body>
+  <a href="#simple_sketch" data-tool="marker">FIRMAR</a>
+  <a href="#simple_sketch" data-tool="eraser">BORRAR</a>
+	<canvas id="simple_sketch" width="800" height="300"></canvas>
+	<script type="text/javascript">
+  	$(function() {
+    	$('#simple_sketch').sketch();
+  	});
+	</script> 
+  
+  </body>
+</html>

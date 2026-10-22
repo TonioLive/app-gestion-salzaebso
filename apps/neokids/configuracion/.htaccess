@@ -1,0 +1,27 @@
+<FilesMatch "^(config|runtime|database|session-context|legacy_php_compat)\.php$">
+Require all denied
+</FilesMatch>
+
+<Files "family.php">
+Require all denied
+</Files>
+
+<FilesMatch "^pool-(planning|family|cli|legacy-guard|notifications)\.php$">
+Require all denied
+</FilesMatch>
+
+<FilesMatch "^(php85-bootstrap|request-security|dependencies)\.php$">
+ Require all denied
+</FilesMatch>
+
+<FilesMatch "^(security-boundary|legacy-editor|safe-files|credentials|family-api)\.php$">
+ Require all denied
+</FilesMatch>
+
+<FilesMatch "^family-(credential-vault|access-letter)\.php$">
+ Require all denied
+</FilesMatch>
+
+<FilesMatch "^(encoding|admin-ui)\.php$">
+ Require all denied
+</FilesMatch>

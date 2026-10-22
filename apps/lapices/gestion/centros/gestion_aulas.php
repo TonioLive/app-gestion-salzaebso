@@ -1,0 +1,368 @@
+<?php header('Content-Type: text/html; charset=UTF-8'); require("../../configuracion/parte_superior_privado_ancho_bootstrap.php"); ?>
+<link rel="stylesheet" href="/gestion/panel/assets/responsive-lists.css?v=20261005.1">
+<?php 
+
+$mostrar_estadisticas=false;
+
+$num_columnas_tabla=8;
+if ($_GET["mostrar_estadisticas"]==1) {
+        $mostrar_estadisticas=true;
+        $num_columnas_tabla++;
+        } 
+
+$formulario_name="centros";
+$formulario_accion="editar_centro2.php";
+
+$total_ninos=0;
+$total_ninos=0;
+
+$id_centro=$centro_actual;
+
+$fecha_seleccionada=$_GET["fecha_seleccionada"];
+
+if (strlen($fecha_seleccionada)==0) {
+        $fecha_seleccionada=date("U");
+        }
+
+$url_retorno="/index.php";
+        
+if (strlen($id_centro)!=0) {
+        
+                $busca_datos_centro=db_query("SELECT * FROM centros WHERE id_centro=$id_centro");
+                if (db_num_rows($busca_datos_centro)!=0) {
+                        $datos_centro=db_fetch_array($busca_datos_centro);
+                        
+                        $db_nombre_centro=$datos_centro["nombre_centro"];
+
+                        }
+
+        // Busca el curso actual
+        $curso_seleccionado=$_GET["curso_seleccionado"];
+        if (strlen($curso_seleccionado)==0) {
+
+        $busca_curso_actual=db_query("SELECT * FROM cursos_academicos WHERE fecha_inicio<='".date("Y-m-d")."' AND fecha_fin>='".date("Y-m-d")."'");
+
+        if (db_num_rows($busca_curso_actual)!=0) {
+                $datos_curso_actual=db_fetch_array($busca_curso_actual);
+                $id_curso_actual=$datos_curso_actual["id_curso"];
+                } else {
+                $busca_curso_actual=db_query("SELECT * FROM cursos_academicos WHERE fecha_inicio>='".date("Y-m-d")."' ORDER BY fecha_inicio");
+
+                if (db_num_rows($busca_curso_actual)!=0) {
+                        $datos_curso_actual=db_fetch_array($busca_curso_actual);
+                        $id_curso_actual=$datos_curso_actual["id_curso"];
+                        } else {
+                        $id_curso_actual=0;
+                        }
+                }
+        } else {
+        $busca_curso_actual=db_query("SELECT * FROM cursos_academicos WHERE id_curso=$curso_seleccionado");
+        $datos_curso_actual=db_fetch_array($busca_curso_actual);
+        $id_curso_actual=$curso_seleccionado;
+        }
+        if ($id_curso_actual!=0) {
+                                $filtro=" AND id_curso=$id_curso_actual";
+                                } else {
+                                $filtro="";
+                                }
+?>
+                        <form method="GET" action="<?=$_SERVER['PHP_SELF']?>" name="seleccion_curso">
+                        <input type="hidden" name="fecha_seleccionada" value="<?=$fecha_seleccionada;?>">
+                        <font size=2><b>Curso: <select name="curso_seleccionado" size=1 style="font-size: 10px" onchange="document.seleccion_curso.submit();">
+                        <?php 
+                        $busca_listado_cursos=db_query("SELECT * FROM cursos_academicos ORDER BY fecha_inicio DESC");
+
+                        while($datos_listado_cursos=db_fetch_array($busca_listado_cursos)) {
+                        ?>
+                        <option value="<?=$datos_listado_cursos["id_curso"];?>"<?php if ($datos_listado_cursos["id_curso"]==$id_curso_actual) { print " selected"; } ?>><?=$datos_listado_cursos["nombre"];?></option>
+                        <?php 
+                        }
+                        ?>
+                        </select></b></font></form>
+<form name="<?=$formulario_name;?>" action="<?=$formulario_accion;?>" method="POST">
+<input type="hidden" name="id_centro" value="<?=$id_centro;?>">
+<input type="hidden" name="formulario_enviado" value="1">
+        <section class="classrooms-panel" aria-labelledby="classrooms-title">
+                <h1 id="classrooms-title">Aulas del centro <?=app_escape($db_nombre_centro)?></h1>
+                <div class="classrooms-table-scroll legacy-table-scroll" role="region" aria-label="Listado de aulas: desliza para ver todas las columnas" tabindex="0" data-orientation-guard="off">
+                        <table class="table table-bordered table-striped" width="100%">
+                        <tr valign="top">
+                                <td colspan=<?=$num_columnas_tabla?> align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Listado de aulas</b></font></td>
+                        </tr>
+                         <?php 
+	                         
+                         $curso_actual="";
+                         $consulta_aulas=db_query("SELECT * FROM centro_aulas WHERE tipo<3 AND id_centro=$id_centro$filtro ORDER BY id_curso,nombre;") or die(db_error());
+                         while($aulas=db_fetch_array($consulta_aulas)){
+                         //Busca cursos
+                         $consulta_datos_curso=db_query("SELECT * FROM cursos_academicos WHERE id_curso=".$aulas["id_curso"]);
+                         if (db_num_rows($consulta_datos_curso)!=0) {
+                                $datos_curso=db_fetch_array($consulta_datos_curso);
+                                $nombre_curso_academico=$datos_curso["nombre"];
+                                $fecha_fin_curso=$datos_curso["fecha_fin"];
+                                } else {
+                                $nombre_curso_academico="No asignado";
+                                $fecha_fin_curso=date();
+                                }
+
+                        // Analiza el aula
+                        // Calcula ocupación actual
+                        $consulta_ocupacion=db_query("SELECT * FROM alumnos,usuarios WHERE alumnos.id_usuario=usuarios.id_usuario AND alumnos.aula=".$aulas["id_aula"]." AND fecha_matricula<='".date("Y-m-d",$fecha_seleccionada)."' AND fecha_baja>='".date("Y-m-d",$fecha_seleccionada)."' AND fecha_matricula<>fecha_baja") or die(db_error()."-1");
+                        $ocupacion_actual=db_num_rows($consulta_ocupacion);
+                        // Calcula ocupación actual niños
+                        $consulta_ocupacion_ninos=db_query("SELECT * FROM alumnos,usuarios WHERE alumnos.id_usuario=usuarios.id_usuario AND usuarios.sexo='V' AND alumnos.aula=".$aulas["id_aula"]." AND fecha_matricula<='".date("Y-m-d",$fecha_seleccionada)."' AND fecha_baja>='".date("Y-m-d",$fecha_seleccionada)."' AND fecha_matricula<>fecha_baja") or die(db_error()."-1");
+                        $ocupacion_actual_ninos=db_num_rows($consulta_ocupacion_ninos);
+                        $ocupacion_actual_ninas=$ocupacion_actual-$ocupacion_actual_ninos;
+
+                        $total_ninos=$total_ninos+$ocupacion_actual_ninos;
+                        $total_ninas=$total_ninas+$ocupacion_actual_ninas;
+
+                        if ($ocupacion_actual!=0) {
+                                $porcentaje_ninos=number_format(($ocupacion_actual_ninos/$ocupacion_actual)*100,2,",",".");
+                                $porcentaje_ninas=number_format(($ocupacion_actual_ninas/$ocupacion_actual)*100,2,",",".");
+                                } else {
+                                $porcentaje_ninos="0";
+                                $porcentaje_ninas="0";
+                                }
+
+if ($mostrar_estadisticas==true) {                        
+                        // Calcula numero de inscripciones
+                        $busca_inscripcion=db_query("SELECT alumnos.id_alumno,usuarios.Nombre,usuarios.Apellido1,usuarios.Apellido2 FROM alumnos, usuarios, servicios_contratados, tarifa WHERE alumnos.id_usuario=usuarios.id_usuario AND servicios_contratados.id_servicio=tarifa.ID AND servicios_contratados.id_alumno=alumnos.id_alumno AND tarifa.subcat=1 AND alumnos.aula=".$aulas["id_aula"]." GROUP BY alumnos.id_alumno") or die(db_error());
+                        $inscripciones_total1=db_num_rows($busca_inscripcion);
+
+                        // Inscripciones con servicio aula
+                        
+                        $busca_inscripcion=db_query("SELECT * FROM servicios_contratados_aula, tarifa WHERE servicios_contratados_aula.id_servicio=tarifa.ID AND servicios_contratados_aula.id_aula=".$aulas["id_aula"]." AND tarifa.subcat=1") or die(db_error());
+                        $inscripciones_total2=0;
+                        while($datos_inscripcion=db_fetch_array($busca_inscripcion)) {
+                        $consulta_ocupacion_total=db_query("SELECT * FROM alumnos,usuarios WHERE alumnos.id_usuario=usuarios.id_usuario AND alumnos.aula=".$aulas["id_aula"]) or die(db_error()."-1");
+                        while($datos_ocupacion_total=db_fetch_array($consulta_ocupacion_total)) {
+                                $busca_si_activado=db_query("SELECT * FROM servicios_no_contratados WHERE id_servicio_aula=".$datos_inscripcion["id_servicio_contratado"]." AND id_usuario=".$datos_ocupacion_total["id_alumno"]);
+                                        if (db_num_rows($busca_si_activado)==0) {
+                                                $inscripciones_total2++;
+                                                }
+                                        }
+                                }
+
+                        $inscripciones_total=$inscripciones_total1+$inscripciones_total2;
+
+                        // Calcula ocupación total
+                        $consulta_ocupacion_total=db_query("SELECT * FROM alumnos,usuarios WHERE alumnos.id_usuario=usuarios.id_usuario AND fecha_matricula<>fecha_baja AND alumnos.aula=".$aulas["id_aula"]) or die(db_error()."-1");
+                        $ocupacion_total=db_num_rows($consulta_ocupacion_total);
+                        
+                        // Calcula asistencia
+                        $consulta_asistencia_hoy=db_query("SELECT servicios_consumidos.id_alumno FROM servicios_consumidos WHERE (((servicios_consumidos.id_servicio)=".$aulas["id_aula"].") AND ((servicios_consumidos.fecha)='".date("Y-m-d",$fecha_seleccionada)."')) GROUP BY servicios_consumidos.id_alumno") or die(db_error()."-1");
+                        $asistencia_hoy=db_num_rows($consulta_asistencia_hoy);
+                        
+                        $ocupacion_max=$aulas["capacidad"];
+                        $ocupacion_min=$aulas["ocupacion_minima"];
+                        $color_ocupacion="#000000";
+                        if ($ocupacion_actual>$ocupacion_max) {
+                                $color_ocupacion="#FF0000";
+                                $mensaje_ocupacion="Se ha superado la capacidad del aula.";
+                                }
+                        if ($ocupacion_actual<$ocupacion_min) {
+                                $color_ocupacion="#FF0000";
+                                $mensaje_ocupacion="No se alcanza la ocupación mínima.";
+                                }
+
+                        // Calcula promedio de edades del aula
+                        $promedio_edades=0;
+                        if ($ocupacion_actual>0) {
+                                while($listado_alumnos_aula=db_fetch_array($consulta_ocupacion)) {
+                                        // 1. Comprueba la edad restando el año de nacimiento al año actual
+                                        $fecha_l=$listado_alumnos_aula["fecha_nacimiento"];
+                                        $edad_a_l=(date("Y")-date("Y",strtotime($fecha_l)));
+
+                                        // 1.1. Cacula edad con decimales
+                                        $mes_d_l=date("m",strtotime($fecha_l));
+                                        $mes_d_n=date("m");
+                                        $dif_meses=$mes_d_n-$mes_d_l;
+                                        
+                                        $edad_d_l=($edad_a_l*12)+$dif_meses;
+                                        $promedio_edades=$promedio_edades+$edad_d_l;
+
+                                        }
+                                $promedio_edades=round($promedio_edades/$ocupacion_actual,2);
+                                }
+
+                        // Comprueba si es actual o futuro
+                        if ($fecha_fin_curso>=date("Y-m-d")) {
+                                $curso_actual_o_futuro=true;
+                                } else {
+                                $curso_actual_o_futuro=false;
+                                }
+                        // Comprueba si el aula es de 0-1
+                        if ($aulas["edad_minima_prog"]==0) {
+                                // $curso_actual_o_futuro=false;
+                                }
+        }
+                        
+                        if ($curso_actual!=$nombre_curso_academico) {
+                        ?>
+                        <tr valign="top">
+                                <td colspan=<?=$num_columnas_tabla?> align="left" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>">Curso: <?=$nombre_curso_academico;?></font></td>
+                        </tr>
+                        <tr valign="top">
+                                <td align="left" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Nombre</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Capacidad</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Ocupación Mín.</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Ocupación</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Niños y niñas</b></font></td>
+                                <?php 
+                                if ($mostrar_estadisticas==true) {  
+                                ?>
+                                <td align="center" bgcolor="#efefef" width=35%><a href="javascript:selecciona_fecha();" title="Selecciona la fecha en el calendario"><font size=2 face="<?= $fuente_general; ?>"><font size=2><img src="/imagen/calendario.gif" border=0 align="right"><b>Ocupación<br><?=date("d/m/Y",$fecha_seleccionada);?></b></font></a>
+                                <table width=100% border=1 bordercolor="#000000" style="border-collapse: collapse">
+                                <tr>
+                                <td width=25% align="center"><font size=2 face="<?= $fuente_general; ?>" color="#000000">Preins.</font></td>
+                                <td width=25% align="center"><font size=2 face="<?= $fuente_general; ?>" color="#000000">Actual</font></td>
+                                <td width=25% align="center"><font size=2 face="<?= $fuente_general; ?>" color="#000000">Asistencia</font></td>
+                                <td width=25% align="center"><font size=2 face="<?= $fuente_general; ?>" color="#000000">Ocupación</font></td>
+                                </tr>
+                                </table></td>
+                                <!-- <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>Promedio edades</b></font></td> -->
+                                <?php 
+                                }
+                                ?>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>&nbsp;</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>&nbsp;</b></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>&nbsp;</b></font></td>
+                        </tr>
+                        <?php 
+                        $curso_actual=$nombre_curso_academico;
+                        }
+                        ?>
+                        <tr valign="top" style="padding-top:5px;pagging-bottom:5px;">
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$aulas["nombre"];?></font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$aulas["capacidad"];?></font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$aulas["ocupacion_minima"];?></font></td>
+                                <td align="center" bgcolor="#ffffff"><a href='javascript:mostrar_ocupacion(5,<?=$aulas["id_aula"]?>);'><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$ocupacion_actual;?></font></a></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$ocupacion_actual_ninos;?> niños (<?=$porcentaje_ninos?> %) / <?=$ocupacion_actual_ninas;?> niñas (<?=$porcentaje_ninas?> %)</font></td>
+                        <?php 
+                          if ($mostrar_estadisticas==true) { 
+                         ?>       
+                                <td align="center" bgcolor="#ffffff"><table width=100% border=1 bordercolor="#000000" style="border-collapse: collapse">
+                                <tr>
+                                <td width=25% align="center"><a href='javascript:mostrar_ocupacion(12,<?=$aulas["id_aula"]?>);'><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$ocupacion_total-$inscripciones_total;?></a></font></td>
+                                <td width=25% align="center"><a href='javascript:mostrar_ocupacion(1,<?=$aulas["id_aula"]?>);'><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$ocupacion_actual;?><br>(V: <?=$ocupacion_actual_ninos;?> H:<?=$ocupacion_actual_ninas;?>)</font></a></td>
+                                <td width=25% align="center"><a href='javascript:mostrar_ocupacion(2,<?=$aulas["id_aula"]?>);'><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$asistencia_hoy;?></font></a></td>
+                                <td width=25% align="center"><a href='javascript:mostrar_ocupacion(5,<?=$aulas["id_aula"]?>);'><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=$ocupacion_total;?></font></a></td>
+                                </tr>
+                                </table><font size=2><?=$mensaje_ocupacion;?></font></td>
+                                <!-- <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$promedio_edades;?> meses</font></td> -->
+                                <?php 
+                                }
+                                ?>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><a href='/pedidos/introducir_nuevo_pedido.php?id_cliente=<?=$aulas["id_aula"]?>'><b>Pedido de material</b></a></font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">
+                                        <a href="/aulas/nuevo_presupuesto.php?id_aula=<?=$aulas["id_aula"];?>" title="Presupuesto docencia Aula"><img src="servicios.gif" border=0></a>
+                                        <a href="listado_alumnos.php?id_aula=<?=$aulas["id_aula"];?>" title="Listado de Alumnos en Aula"><img src="alumnos.gif" border=0></a>
+                                        <a href="#" onclick="window.open('fotos_alumnos.php?id_aula=<?=$aulas["id_aula"];?>','orla','scrollbars=yes,toolbar=yes,width=800,height=600');" title="Orla de Alumnos en Aula"><img src="fotos.gif" border=0></a>
+                                        <a href="editar_aula.php?o=1&id_aula=<?=$aulas["id_aula"];?>" title="Editar información del aula"><img src="modificar.gif" border=0></a>
+                                        <?php  if (($nivel_acceso==3) or ($nivel_acceso==4)) { ?> <a href="listado_alumnos_ayudas.php?id_aula=<?=$aulas["id_aula"];?>" title="Listado de alumnos para ayudas"><img src="alumnos_ayudas.gif" border=0></a><?php  } ?>
+                                        <a href="/gestion/agenda_dia/calendario_programacion.php?id_aula=<?=$aulas["id_aula"];?>" title="Programación" target="_new"><img src="/imagen/calendario.gif" border=0></a>
+                                        <a href="/gestion/agenda_programacion_ingles/gestion_programaciones.php" title="Programación Inglés" target="_new"><img src="/imagen/ingles.gif" border=0></a> 
+                                        <a target="_blank" href="/gestion/calendar/demos/agenda.php?id_aula=<?=$aulas["id_aula"];?>"><img src="date.png" border=0></a>  <a title="Examinar carpetas de informes" href="javascript:ver_carpeta(<?=$aulas["id_aula"]?>);"><img src="carpetas.gif" border=0></a></font
+                                </td>
+                                <td align="center" bgcolor="#ffffff">
+                                        <button type="button" class="btn btn-xs btn-primary" onclick="if (confirm('Vas a enviar mensajes, con las contraseñas de acceso al área privada, a todos los alumnos del aula.\n\n¿Estás segura/o?')) { window.open('/mailing/enviar_mensaje_password.php?id_curso=<?=$aulas["id_curso"];?>&id_aula=<?=$aulas["id_aula"];?>') }">Enviar contraseñas</button>
+                                        <?php
+
+                                        // Busca si hay alumnos con código de inscripción
+                                        $busca_alumnos_con_codigo=db_query("SELECT * FROM alumnos WHERE aula=".$aulas["id_aula"]." AND codigo_inscripcion<>'';") or die(db_error());
+                                        $alumnosConCodigoInscripcion=db_num_rows($busca_alumnos_con_codigo);
+                                        // Si hay alumnos con código de inscripción y es septiembre, muestra el botón
+
+                                        if ((date('n',strtotime($datos_curso_actual["fecha_inicio"]))==9) and ($alumnosConCodigoInscripcion>0)) {
+                                        ?>
+                                        <button type="button" class="btn btn-xs btn-primary" onclick="if (confirm('Vas a enviar mensajes, con el ID Solicitud para solicitar las ayudas, a todos los alumnos del aula.\n\n¿Estás segura/o?')) { window.open('/mailing/enviar_mensaje_codigo_inscripcion.php?id_curso=<?=$aulas["id_curso"];?>&id_aula=<?=$aulas["id_aula"];?>') }">Enviar Código de Matrícula (ID Solicitud)</button>
+                                        <?php
+                                        }
+                                        ?>
+                                </td>
+                        </tr>
+                         <?php 
+                         }
+                        // Comedor
+                        
+                        $busca_alumnos=db_query("SELECT usuarios.*, alumnos.*, alumnos.id_centro AS centro_alumno, alumnos.comedor AS tipo_menu, alumnos.tipo_menu_comedor AS tipo_menu_consumido FROM usuarios, alumnos WHERE usuarios.id_usuario=alumnos.id_usuario AND alumnos.id_centro=$centro_actual AND alumnos.comedor<>2 AND alumnos.comedor<>0 AND alumnos.fecha_matricula<='".date("Y-m-d",$fecha_seleccionada)."' AND alumnos.fecha_baja>='".date("Y-m-d",$fecha_seleccionada)."' ORDER BY comedor, alumnos.tipo_menu_comedor, fecha_nacimiento DESC, Apellido1, Apellido2, Nombre") or die(db_error());
+                        $color_ocupacion="#000000";
+                        
+	                    // Calcula comedores
+	                        
+	                    $numero_comedores=db_num_rows($busca_alumnos);                        
+                        ?>
+                        <tr valign="top">
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">COMEDOR</font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">-</font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">-</font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$numero_comedores?></font></td>                                                                
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">-</font></td>
+                         <?php 
+                          if ($mostrar_estadisticas==true) { 
+                         ?>  
+                                <td align="center" bgcolor="#ffffff"><table width=100% border=1 bordercolor="#000000" style="border-collapse: collapse">
+                                <tr>
+                                <td width=33% align="center"><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>"><?=db_num_rows($busca_alumnos);?></font></td>
+                                <td width=33% align="center"><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>">-</font></td>
+                                <td width=34% align="center"><font size=2 face="<?= $fuente_general; ?>" color="<?=$color_ocupacion?>">-</font></td>
+                                </tr>
+                                </table></td>
+                                <!-- <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><?=$promedio_edades;?> meses</font></td> -->
+                                <?php 
+                                }
+                                ?>
+                             
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>">-</font></td>
+                                <td align="center" bgcolor="#ffffff"><font size=2 face="<?= $fuente_general; ?>"><a href="listado_alumnos_comedor.php?fecha_seleccionada=<?=$fecha_seleccionada;?>" title="Listado de Alumnos en Comedor"><img src="alumnos.gif" border=0></a></font></td>
+                                <td align="center" bgcolor="#efefef"><font size=2 face="<?= $fuente_general; ?>"><b>&nbsp;</b></font></td>                                
+                        </tr>
+                        <?php 
+                        $total_alumnos=$total_ninos+$total_ninas;
+                        if ($total_alumnos>0) {
+                                $total_ninos_t=$total_ninos." (".round((($total_ninos/$total_alumnos)*100),2)."%)";
+                                $total_ninas_t=$total_ninas." (".round((($total_ninas/$total_alumnos)*100),2)."%)";
+                                }
+                        ?>
+                        <tr>
+                        <td colspan=7 align="center"><font size=2><b>Total:</b> <?=$total_alumnos?> - <b>Total actual niños:</b> <?=$total_ninos_t?> - <b>Total actual niñas:</b> <?=$total_ninas_t?></td>
+                        <td></td>
+                        </tr>
+                        </table>
+                </div><br>
+                        <input type="button" onclick="window.location.href='listado_alumnos_completo.php?ciclo=1&id_curso=<?=$id_curso_actual?>'" value="Ver listado completo de primer ciclo" style="font-size: 10px"> <input type="button" onclick="window.location.href='listado_alumnos_completo.php?ciclo=2&id_curso=<?=$id_curso_actual?>'" value="Ver listado completo de segundo ciclo" style="font-size: 10px"><br>
+                        <input type="button" onclick="window.location.href='editar_aula.php?o=1'" value="Agregar aula" style="font-size: 10px"> <input type="button" value="Salir" onclick="window.location.href='<?=$url_retorno?>'" style="font-size: 10px"><br><br>
+        </section>
+</form><br>
+<input class="classrooms-statistics" type="button" value="Mostrar estadísticas de ocupación de aulas" onclick="window.location.href='gestion_aulas.php?mostrar_estadisticas=1&fecha_seleccionada=<?=$fecha_seleccionada?>'">
+<script language="Javascript">
+
+function ver_carpeta(id_aula) {
+        
+        window.open('ver_carpeta_aula.php?id_aula='+id_aula,'carpetas','width=550,height=450toolbar=yes,scrollbars=yes,resizables=yes');
+        
+        }
+        
+function mostrar_ocupacion(tipo_listado,id_aula) {
+        window.open("detalle_informe_ocupacion.php?fecha=<?=$fecha_seleccionada;?>&tipo="+tipo_listado+"&id_aula="+id_aula,"ventana_detalle","toolbar=no,width=750,height=550");
+        }
+
+function selecciona_fecha(nombre_campo_presel,nombre_formulario) {
+                // Comprueba fecha
+
+        mes_presel=<?=date("m",$fecha_seleccionada);?>;
+        dia_presel=<?=date("d",$fecha_seleccionada);?>;
+        ano_presel=<?=date("Y",$fecha_seleccionada);?>;
+        fecha_preseleccionada=ano_presel+"/"+mes_presel+"/"+dia_presel;
+        
+        window.open('/herramientas/calendario_mes1.php?dia='+fecha_preseleccionada+'&pagina_destino=/gestion/centros/gestion_aulas.php','calendario','toolbar=no,resizable=no,width=200,height=216');
+        }
+</script>
+<?php 
+} else {
+?>
+<br><br>Error: <a href="/index.php">Volver a la página de inicio</a></br></br>
+<?php 
+}
+ require("../../configuracion/parte_inferior.php"); ?>

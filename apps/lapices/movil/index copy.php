@@ -1,0 +1,99 @@
+<?php 
+require("../configuracion/config.php");
+
+require("../configuracion/autentifica_padre.php");
+
+
+$arrStr = explode("/", $_SERVER['SCRIPT_NAME'] );
+$arrStr = array_reverse($arrStr ); 
+$nombre_pagina_actual=str_replace(".php","",$arrStr[0]);
+
+// Comprueba si el archivo existe
+if (file_exists("/var/www/webcam/imagenes/cabecera_".$nombre_pagina_actual.".png")==false) {
+	$nombre_pagina_actual="menu";
+	}
+ 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Escuela Infantil Lápices</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<link rel="stylesheet" href="style.css" type="text/css" media="all">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="logo">
+    <a href="index.html"><img src="images/logo.png" alt="Everything you need to know"></a>
+</div>
+<div class="header">
+	<div class="wrap top-bar">
+    	<button class="menu-show"><img src="images/plus.png" alt="plus"></button>
+    	<button class="menu-hide"><img src="images/minus.png" alt="minus"></button>
+        <div class="search">
+        	<form>
+            	<input type="text">
+                <input type="submit" value="">
+            </form>
+        </div>
+        <div class="clear-both"></div>
+        <nav class="menu">
+            <ul>
+<?php  include("menu_lateral.php"); ?>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="content">
+	<div class="wrap">
+        <div class="post">
+        	<h2><a href="single.html">Basic Excerpt View</a></h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <div class="post-info">Nov 23 2011 <span>|</span> by <a href="#">Mobifreaks.com</a> <span>|</span> <a href="#">No comments</a></div>
+         </div>
+        <div class="post">
+        	<h2><a href="single.html">Excerpt with Image</a></h2>
+            <figure><img src="http://lorempixel.com/300/160" alt=""></figure>
+            <div class="post-info">Nov 23 2011 <span>|</span> by <a href="#">Mobifreaks.com</a> <span>|</span> <a href="#">No comments</a></div>
+         </div>
+        <div class="post">
+        	<h2><a href="single.html">Excerpt with Image and text</a></h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <figure><img src="http://lorempixel.com/300/160" alt=""></figure>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <div class="post-info">Nov 23 2011 <span>|</span> by <a href="#">Mobifreaks.com</a> <span>|</span> <a href="#">No comments</a></div>
+         </div>
+        <div class="post">
+        	<h2><a href="single.html">Basic Excerpt View</a></h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <div class="post-info">Nov 23 2011 <span>|</span> by <a href="#">Mobifreaks.com</a> <span>|</span> <a href="#">No comments</a></div>
+         </div>
+    </div>
+</div>
+<div class="footer">
+	<div class="wrap bot-bar">
+    	&copy; 2011 by domain.tld &bull; design by <a href="http://mobifreaks.com">mobifreaks.com</a>
+        <div class="clear-both"></div>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" class="license"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+    </div>
+</div>
+<script type="text/javascript">
+	$('.menu').hide();
+	$('.menu-show').show();
+	$('.menu-hide').hide();
+	$('.menu-show').click(function(){
+		$('.menu-show').toggle();
+		$('.menu-hide').toggle();
+		$('.menu').slideDown();
+	});
+	$('.menu-hide').click(function(){
+		$('.menu-hide').toggle();
+		$('.menu-show').toggle();
+		$('.menu').slideUp();
+	});
+</script>
+<a href="http://www.mobifreaks.com" title="site design by Mobifreaks.com"></a>
+</body>
+</html>

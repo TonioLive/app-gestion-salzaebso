@@ -1,0 +1,37 @@
+<?php 
+require("../configuracion/config.php");
+
+$id_competencia=$_POST["id_competencia"];
+
+$nombre_escuela=$_POST["nombre_escuela"];
+$coordenadas=$_POST["coordenadas"];
+$calle=$_POST["calle"];
+$poblacion=$_POST["poblacion"];
+$municipal=$_POST["municipal"];
+$cp=$_POST["cp"];
+
+// Comprobamos si es nuevo
+if ($id_competencia==0) {
+                        $consulta_insert="INSERT INTO escuelas_competencia (nombre_escuela) VALUES ('$nombre_escuela')";
+                        db_query($consulta_insert) or die(db_error());
+                        $id_competencia=db_insert_id();
+                        }
+
+// Separamos latitud y longitud
+
+$coordenadas_actuales=str_replace("(","",$coordenadas);
+$coordenadas_actuales=str_replace(")","",$coordenadas_actuales);
+$array_coordenadas=explode(",",$coordenadas_actuales);
+$latitud_actual=$array_coordenadas[0];
+$longitud_actual=$array_coordenadas[1];
+
+                        
+if ($num_errores==0) {
+        // Introduce información
+        db_query("UPDATE escuelas_competencia SET municipal='$municipal', nombre_escuela='$nombre_escuela', latitud='$latitud_actual', longitud='$longitud_actual',calle='$calle',poblacion='$poblacion',cp='$cp' WHERE id_competencia=$id_competencia") or die(db_error()."-2");
+        
+        }
+        
+header("location: listado_escuelas.php");
+
+?>

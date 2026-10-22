@@ -1,0 +1,1 @@
+{"name":"neokids-notifications","private":true,"version":"1.0.0","description":"Envío de avisos Web Push de Neo Kids","scripts":{"start":"node worker.cjs","test":"node --test test-worker.cjs"},"dependencies":{"web-push":"3.6.7"}}

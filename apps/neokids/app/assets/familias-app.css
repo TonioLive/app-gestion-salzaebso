@@ -1,0 +1,2528 @@
+:root {
+    --familias-green-950: #103f37;
+    --familias-green-900: #134d43;
+    --familias-green-800: #176255;
+    --familias-green-700: #217566;
+    --familias-green-100: #deeee9;
+    --familias-green-50: #eff7f4;
+    --familias-pink: #ee4b91;
+    --familias-blue: #48a9d4;
+    --familias-lime: #75bb43;
+    --familias-yellow: #f6b83e;
+    --familias-ink: #17332e;
+    --familias-muted: #667873;
+    --familias-line: #dbe7e3;
+    --familias-bg: #edf5f2;
+    --familias-white: #fff;
+    --familias-shadow: 0 16px 45px rgba(16, 63, 55, .09);
+    --familias-sidebar: 272px;
+    --familias-header: 76px;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--familias-bg);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body.familias-app-shell {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    color: var(--familias-ink);
+    background:
+        radial-gradient(circle at 95% 6%, rgba(72, 169, 212, .1) 0 120px, transparent 121px),
+        radial-gradient(circle at 7% 94%, rgba(117, 187, 67, .09) 0 160px, transparent 161px),
+        var(--familias-bg);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.familias-app-shell *,
+.familias-app-shell *::before,
+.familias-app-shell *::after {
+    box-sizing: border-box;
+}
+
+.familias-app-shell a {
+    color: var(--familias-green-800);
+}
+
+.familias-app-shell a:hover,
+.familias-app-shell a:focus {
+    color: var(--familias-green-950);
+}
+
+.familias-app-shell .wrapper {
+    width: 100%;
+    max-width: none !important;
+    min-height: 100vh;
+    margin: 0 !important;
+    overflow: visible !important;
+    background: transparent;
+    box-shadow: none !important;
+}
+
+/* Cabecera */
+.familias-app-shell .main-header {
+    position: fixed;
+    z-index: 1040;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--familias-header);
+    max-height: none;
+    background: var(--familias-green-950);
+    box-shadow: 0 8px 28px rgba(10, 47, 41, .16);
+}
+
+.familias-app-shell .main-header .logo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: var(--familias-sidebar);
+    height: var(--familias-header);
+    align-items: center;
+    padding: 0 22px;
+    color: #fff;
+    background: rgba(0, 0, 0, .09) !important;
+    text-align: left;
+}
+
+.familias-app-shell .main-header .logo:hover,
+.familias-app-shell .main-header .logo:focus {
+    background: rgba(0, 0, 0, .16) !important;
+}
+
+.familias-app-shell .main-header .logo .logo-mini {
+    display: none;
+}
+
+.familias-app-shell .familias-brand {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 12px;
+}
+
+.familias-app-shell .familias-brand img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    border: 2px solid rgba(255, 255, 255, .9);
+    border-radius: 50%;
+    background: #fff;
+    object-fit: cover;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .16);
+}
+
+.familias-app-shell .familias-brand__copy {
+    display: grid;
+    min-width: 0;
+    line-height: 1.1;
+}
+
+.familias-app-shell .familias-brand__copy strong {
+    overflow: hidden;
+    color: #fff;
+    font-size: 19px;
+    letter-spacing: -.025em;
+    text-overflow: ellipsis;
+}
+
+.familias-app-shell .familias-brand__copy small {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, .64);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .main-header .navbar {
+    height: var(--familias-header);
+    min-height: var(--familias-header);
+    margin-left: var(--familias-sidebar);
+    border: 0;
+    background: var(--familias-green-950) !important;
+}
+
+.familias-app-shell .main-header .sidebar-toggle {
+    display: grid;
+    width: 62px;
+    height: var(--familias-header);
+    padding: 0;
+    place-items: center;
+    color: #fff;
+    font-size: 17px;
+}
+
+.familias-app-shell .main-header .sidebar-toggle::before {
+    font-size: 18px;
+}
+
+.familias-app-shell .main-header .sidebar-toggle:hover,
+.familias-app-shell .main-header .sidebar-toggle:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, .08);
+}
+
+.familias-app-shell .navbar-custom-menu {
+    height: 100%;
+}
+
+.familias-app-shell .navbar-custom-menu > .navbar-nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0 10px 0 0;
+}
+
+.familias-app-shell .navbar-custom-menu > .navbar-nav > li {
+    position: relative;
+}
+
+.familias-app-shell .navbar-custom-menu > .navbar-nav > li > a:not(.familias-logout) {
+    display: grid;
+    min-width: 48px;
+    min-height: 48px;
+    margin: 0 2px;
+    padding: 0 12px;
+    place-items: center;
+    border-radius: 13px;
+    color: rgba(255, 255, 255, .92);
+}
+
+.familias-app-shell .navbar-custom-menu > .navbar-nav > li > a:not(.familias-logout):hover,
+.familias-app-shell .navbar-custom-menu > .navbar-nav > li > a:not(.familias-logout):focus,
+.familias-app-shell .navbar-nav > .open > a {
+    color: #fff !important;
+    background: rgba(255, 255, 255, .1) !important;
+}
+
+.familias-app-shell .navbar-custom-menu .label {
+    top: 6px;
+    right: 5px;
+    min-width: 18px;
+    min-height: 18px;
+    padding: 3px 5px;
+    border: 2px solid var(--familias-green-950);
+    border-radius: 999px;
+    font-size: 9px;
+}
+
+.familias-app-shell .navbar-custom-menu .dropdown-menu {
+    margin-top: 8px;
+    overflow: hidden;
+    border: 1px solid var(--familias-line);
+    border-radius: 16px;
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .navbar-nav > .user-menu .user-image {
+    width: 34px;
+    height: 34px;
+    margin: 0 9px 0 0;
+    border: 2px solid rgba(255, 255, 255, .72);
+}
+
+.familias-app-shell .navbar-nav > .user-menu > .dropdown-menu > .user-header {
+    height: auto;
+    min-height: 175px;
+    padding: 22px;
+    background: linear-gradient(145deg, var(--familias-green-950), var(--familias-green-700));
+}
+
+.familias-app-shell .main-header .navbar .familias-logout {
+    display: flex !important;
+    min-height: 42px;
+    align-items: center;
+    gap: 7px;
+    margin: 0 7px;
+    padding: 9px 13px !important;
+    border: 1px solid rgba(255, 255, 255, .32);
+    border-radius: 12px;
+    color: #fff !important;
+    background: rgba(0, 0, 0, .12);
+    font-weight: 750;
+    line-height: 20px !important;
+    transition: 150ms ease;
+}
+
+.familias-app-shell .main-header .navbar .familias-logout:hover,
+.familias-app-shell .main-header .navbar .familias-logout:focus {
+    border-color: rgba(255, 255, 255, .72);
+    background: rgba(0, 0, 0, .25) !important;
+}
+
+.familias-app-shell .familias-logout .fa {
+    font-size: 17px;
+}
+
+/* Menú lateral */
+.familias-app-shell .main-sidebar {
+    position: fixed;
+    z-index: 1035;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--familias-sidebar);
+    padding-top: var(--familias-header);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 110% 80%, rgba(255, 255, 255, .05) 0 130px, transparent 131px),
+        linear-gradient(180deg, var(--familias-green-900), var(--familias-green-950));
+    box-shadow: 12px 0 35px rgba(16, 63, 55, .08);
+    transition: transform 180ms ease;
+}
+
+.familias-app-shell .sidebar {
+    height: 100%;
+    padding: 18px 14px 28px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .2) transparent;
+}
+
+.familias-app-shell .sidebar .user-panel {
+    display: flex;
+    width: 100%;
+    min-height: 76px;
+    align-items: center;
+    margin: 0 0 18px;
+    padding: 13px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .06);
+}
+
+.familias-app-shell .user-panel > .image > img {
+    width: 44px;
+    height: 44px;
+    border: 2px solid rgba(255, 255, 255, .7);
+}
+
+.familias-app-shell .user-panel > .info {
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 12px;
+}
+
+.familias-app-shell .user-panel > .info > p {
+    overflow: hidden;
+    margin: 0;
+    color: #fff;
+    font-size: 13px;
+    text-overflow: ellipsis;
+}
+
+.familias-app-shell .user-panel > .info > a {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, .66);
+    font-size: 10px;
+}
+
+.familias-app-shell .sidebar-menu {
+    white-space: normal;
+}
+
+.familias-app-shell .sidebar-menu > li.header {
+    padding: 6px 12px 9px;
+    color: rgba(255, 255, 255, .46);
+    background: transparent;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .sidebar-menu > li {
+    margin: 3px 0;
+}
+
+.familias-app-shell .sidebar-menu > li > a {
+    display: flex;
+    min-height: 49px;
+    align-items: center;
+    padding: 11px 13px;
+    border: 0;
+    border-radius: 13px;
+    color: rgba(255, 255, 255, .78);
+    font-size: 13px;
+    font-weight: 700;
+    transition: 140ms ease;
+}
+
+.familias-app-shell .sidebar-menu > li > a > .fa {
+    display: grid;
+    width: 29px;
+    height: 29px;
+    margin-right: 10px;
+    place-items: center;
+    border-radius: 9px;
+    color: #fff;
+    background: rgba(255, 255, 255, .09);
+    font-size: 13px;
+}
+
+.familias-app-shell .sidebar-menu > li:hover > a,
+.familias-app-shell .sidebar-menu > li.active > a {
+    border-left: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, .11);
+}
+
+.familias-app-shell .sidebar-menu > li.active > a::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: var(--familias-yellow);
+    box-shadow: 0 0 0 4px rgba(246, 184, 62, .13);
+}
+
+.familias-app-shell .sidebar-menu .pull-right-container {
+    position: static;
+    margin-left: auto;
+}
+
+.familias-app-shell .sidebar-menu .label {
+    padding: 4px 7px;
+    border-radius: 999px;
+    font-size: 9px;
+}
+
+.familias-app-shell .sidebar-menu .familias-sidebar-logout {
+    margin-top: 16px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.familias-app-shell .sidebar-menu .familias-sidebar-logout > a {
+    color: #ffe5ef;
+    background: rgba(238, 75, 145, .08);
+}
+
+/* Zona de contenido */
+.familias-app-shell .content-wrapper {
+    width: auto;
+    min-height: 100vh !important;
+    margin-left: var(--familias-sidebar) !important;
+    padding: calc(var(--familias-header) + 34px) clamp(22px, 3vw, 48px) 54px;
+    border: 0;
+    background: transparent;
+    transition: margin 180ms ease;
+}
+
+.familias-app-shell .content-wrapper > .content-header,
+.familias-app-shell .content-wrapper > .content {
+    width: 100%;
+    max-width: 1480px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.familias-app-shell .content-header {
+    position: relative;
+    min-height: 78px;
+    padding: 0 0 24px;
+}
+
+.familias-app-shell .content-header h1 {
+    max-width: 850px;
+    margin: 0;
+    color: var(--familias-ink);
+    font-size: clamp(29px, 3vw, 42px);
+    font-weight: 850;
+    line-height: 1.08;
+    letter-spacing: -.045em;
+}
+
+.familias-app-shell .content-header h1 small {
+    display: block;
+    margin-top: 9px;
+    color: var(--familias-muted);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0;
+}
+
+.familias-app-shell .content-header .breadcrumb {
+    position: static;
+    display: flex;
+    margin: 15px 0 0;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+    color: var(--familias-muted);
+    background: transparent;
+    font-size: 11px;
+}
+
+.familias-app-shell .content-header .breadcrumb > li + li::before {
+    color: #9baea8;
+}
+
+.familias-app-shell .content-header .breadcrumb a {
+    color: var(--familias-green-800);
+}
+
+.familias-app-shell .content {
+    min-height: 0;
+    padding: 0;
+}
+
+.familias-app-shell .main-footer {
+    margin-left: var(--familias-sidebar);
+    padding: 18px clamp(22px, 3vw, 48px) 28px;
+    border: 0;
+    color: var(--familias-muted);
+    background: transparent;
+    font-size: 11px;
+    text-align: center;
+    transition: margin 180ms ease;
+}
+
+.familias-app-shell .content .container,
+.familias-app-shell .content .container-fluid {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+}
+
+.familias-app-shell .content .row {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.familias-app-shell .content [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+/* Tarjetas y componentes */
+.familias-app-shell .box,
+.familias-app-shell .panel,
+.familias-app-shell .well {
+    overflow: hidden;
+    border: 1px solid rgba(16, 63, 55, .08);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .box {
+    margin-bottom: 20px;
+}
+
+.familias-app-shell .box.box-primary,
+.familias-app-shell .box.box-info,
+.familias-app-shell .box.box-success,
+.familias-app-shell .box.box-warning,
+.familias-app-shell .box.box-danger {
+    border-top: 1px solid rgba(16, 63, 55, .08);
+}
+
+.familias-app-shell .box-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--familias-line);
+    color: var(--familias-ink);
+}
+
+.familias-app-shell .box-header .box-title {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.familias-app-shell .box-body {
+    padding: 20px;
+}
+
+.familias-app-shell .box-body.no-padding {
+    padding: 0;
+}
+
+.familias-app-shell .box-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--familias-line);
+    background: #f8fbfa;
+}
+
+.familias-app-shell .panel {
+    margin-bottom: 12px;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+.familias-app-shell .panel-default > .panel-heading {
+    padding: 14px 16px;
+    border-color: var(--familias-line);
+    background: #f2f7f5;
+}
+
+.familias-app-shell .panel-title {
+    color: var(--familias-ink);
+    font-size: 14px;
+}
+
+.familias-app-shell .panel-body {
+    padding: 16px;
+    color: var(--familias-muted);
+    font-size: 13px;
+}
+
+/* Listado de mensajes: tarjetas sin el ancho mínimo de las tablas generales. */
+.familias-app-shell .familias-messages .familias-table-scroll {
+    overflow: visible;
+}
+
+.familias-app-shell .familias-messages table.table {
+    min-width: 0;
+    table-layout: fixed;
+    background: transparent;
+}
+
+.familias-app-shell .familias-messages table.table > tbody > tr > td {
+    padding: 0 0 13px;
+    border: 0;
+}
+
+.familias-app-shell .familias-messages .panel {
+    margin: 0;
+    overflow: hidden;
+}
+
+.familias-app-shell .familias-messages .panel-title {
+    max-width: 100%;
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    line-height: 1.45;
+}
+
+.familias-app-shell .familias-messages .panel-title a {
+    color: var(--familias-green-950);
+}
+
+.familias-app-shell .familias-message-actions {
+    display: flex;
+    margin-top: 13px;
+    padding-top: 13px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--familias-line);
+}
+
+.familias-app-shell .familias-message-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--familias-muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-message-open {
+    min-width: 145px;
+    color: #fff;
+    border-color: var(--familias-green-800);
+    background: var(--familias-green-800);
+}
+
+.familias-app-shell .familias-message-open:hover,
+.familias-app-shell .familias-message-open:focus {
+    color: #fff;
+    border-color: var(--familias-green-950);
+    background: var(--familias-green-950);
+}
+
+/* Conversaciones */
+.familias-app-shell .familias-chat-page > .content-header,
+.familias-app-shell .familias-chat-page > .content {
+    max-width: 980px;
+}
+
+.familias-app-shell .familias-chat-page > .content-header {
+    min-height: 0;
+}
+
+.familias-app-shell .familias-chat-back {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 7px 11px;
+    border: 1px solid var(--familias-line);
+    border-radius: 10px;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.familias-app-shell .familias-chat-card {
+    overflow: hidden;
+    border: 1px solid rgba(16, 63, 55, .1);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .familias-chat-card__header {
+    display: flex;
+    min-height: 82px;
+    align-items: center;
+    padding: 15px 18px;
+    gap: 12px;
+    border-bottom: 1px solid var(--familias-line);
+    background: #fff;
+}
+
+.familias-app-shell .familias-chat-avatar {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    place-items: center;
+    border-radius: 15px;
+    color: #fff;
+    background: linear-gradient(145deg, var(--familias-green-700), var(--familias-green-950));
+    font-size: 18px;
+    font-weight: 850;
+    box-shadow: 0 8px 20px rgba(23, 98, 85, .18);
+}
+
+.familias-app-shell .familias-chat-card__identity {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+}
+
+.familias-app-shell .familias-chat-card__identity strong {
+    overflow: hidden;
+    color: var(--familias-ink);
+    font-size: 15px;
+    font-weight: 850;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-chat-card__identity small {
+    margin-top: 3px;
+    overflow: hidden;
+    color: var(--familias-muted);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-chat-status {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    border-radius: 999px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 9px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-chat-thread {
+    display: flex;
+    min-height: 390px;
+    padding: 24px;
+    flex-direction: column;
+    gap: 10px;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(117, 187, 67, .055) 0 75px, transparent 76px),
+        radial-gradient(circle at 94% 82%, rgba(72, 169, 212, .06) 0 105px, transparent 106px),
+        #eaf3f0;
+}
+
+.familias-app-shell .familias-chat-day {
+    align-self: center;
+    margin: 2px 0 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #58706a;
+    background: rgba(255, 255, 255, .82);
+    font-size: 9px;
+    font-weight: 800;
+    box-shadow: 0 3px 10px rgba(16, 63, 55, .05);
+}
+
+.familias-app-shell .familias-chat-bubble {
+    position: relative;
+    display: grid;
+    width: fit-content;
+    max-width: min(76%, 650px);
+    min-width: 155px;
+    padding: 10px 12px 8px;
+    gap: 4px;
+    border-radius: 17px;
+    color: var(--familias-ink);
+    box-shadow: 0 5px 15px rgba(16, 63, 55, .07);
+}
+
+.familias-app-shell .familias-chat-bubble--incoming {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    background: #fff;
+}
+
+.familias-app-shell .familias-chat-bubble--outgoing {
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    background: #d9eee7;
+}
+
+.familias-app-shell .familias-chat-bubble__author {
+    color: var(--familias-green-800);
+    font-size: 10px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-chat-bubble--outgoing .familias-chat-bubble__author {
+    color: #9c3265;
+}
+
+.familias-app-shell .familias-chat-bubble__text {
+    overflow-wrap: anywhere;
+    color: #233f39;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.familias-app-shell .familias-chat-bubble__meta {
+    display: inline-flex;
+    min-height: 16px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    color: #71847f;
+    font-size: 8px;
+    line-height: 1;
+}
+
+.familias-app-shell .familias-chat-bubble__meta .fa-check {
+    color: var(--familias-blue);
+}
+
+.familias-app-shell .familias-chat-medication {
+    display: grid;
+    margin: 8px 0 4px;
+    padding: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    border: 1px solid rgba(16, 63, 55, .1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .5);
+}
+
+.familias-app-shell .familias-chat-medication > div {
+    min-width: 0;
+}
+
+.familias-app-shell .familias-chat-medication dt {
+    color: var(--familias-muted);
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .familias-chat-medication dd {
+    margin: 2px 0 0;
+    overflow-wrap: anywhere;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.familias-app-shell .familias-chat-composer {
+    display: grid;
+    padding: 12px;
+    grid-template-columns: minmax(0, 1fr) 50px;
+    align-items: end;
+    gap: 9px;
+    border-top: 1px solid var(--familias-line);
+    background: #f8fbfa;
+}
+
+.familias-app-shell .familias-chat-composer textarea {
+    width: 100%;
+    min-height: 50px;
+    max-height: 150px;
+    margin: 0;
+    padding: 13px 15px;
+    resize: none;
+    border: 1px solid #cbdad5;
+    border-radius: 18px;
+    outline: none;
+    color: var(--familias-ink);
+    background: #fff;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.familias-app-shell .familias-chat-composer textarea:focus {
+    border-color: var(--familias-green-800);
+    box-shadow: 0 0 0 4px rgba(23, 98, 85, .1);
+}
+
+.familias-app-shell .familias-chat-composer > button {
+    display: grid;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    border-radius: 16px;
+    color: #fff;
+    background: var(--familias-green-800);
+    font-size: 17px;
+    box-shadow: 0 8px 18px rgba(23, 98, 85, .2);
+}
+
+.familias-app-shell .familias-chat-composer > button:hover,
+.familias-app-shell .familias-chat-composer > button:focus {
+    background: var(--familias-green-950);
+}
+
+.familias-app-shell .familias-chat-composer__error {
+    grid-column: 1 / -1;
+    padding: 9px 11px;
+    border-radius: 10px;
+    color: #7d2348;
+    background: #fff0f6;
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.familias-app-shell .familias-chat-card__footer {
+    display: flex;
+    padding: 12px 14px;
+    justify-content: space-between;
+    gap: 8px;
+    border-top: 1px solid var(--familias-line);
+    background: #fff;
+}
+
+.familias-app-shell .familias-chat-delete {
+    margin-left: auto;
+    color: #9c3265;
+}
+
+.familias-app-shell .familias-chat-empty {
+    display: grid;
+    min-height: 310px;
+    padding: 30px;
+    place-items: center;
+    align-content: center;
+    gap: 14px;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: var(--familias-shadow);
+    text-align: center;
+}
+
+.familias-app-shell .familias-chat-empty > .fa {
+    color: var(--familias-green-800);
+    font-size: 42px;
+}
+
+/* Redactar un mensaje */
+.familias-app-shell .familias-compose-page > .content-header,
+.familias-app-shell .familias-compose-page > .content {
+    max-width: 1080px;
+}
+
+.familias-app-shell .familias-compose-page > .content-header {
+    min-height: 0;
+}
+
+.familias-app-shell .familias-compose-page > .content-header > p {
+    margin: 7px 0 0;
+    color: var(--familias-muted);
+    font-size: 13px;
+}
+
+.familias-app-shell .familias-compose-card {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: minmax(320px, .9fr) minmax(380px, 1.1fr);
+    border: 1px solid rgba(16, 63, 55, .1);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .familias-recipient-picker {
+    min-width: 0;
+    margin: 0;
+    padding: 25px;
+    border: 0;
+    border-right: 1px solid var(--familias-line);
+    background: #f6faf8;
+}
+
+.familias-app-shell .familias-recipient-picker legend,
+.familias-app-shell .familias-compose-fields h2 {
+    display: flex;
+    width: auto;
+    margin: 0;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    color: var(--familias-ink);
+    font-size: 17px;
+    font-weight: 850;
+    line-height: 1.3;
+}
+
+.familias-app-shell .familias-recipient-picker legend > span,
+.familias-app-shell .familias-compose-fields h2 > span {
+    display: grid;
+    width: 29px;
+    height: 29px;
+    flex: 0 0 29px;
+    place-items: center;
+    border-radius: 10px;
+    color: #fff;
+    background: var(--familias-green-800);
+    font-size: 11px;
+}
+
+.familias-app-shell .familias-compose-help {
+    margin: 10px 0 17px;
+    color: var(--familias-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.familias-app-shell .familias-recipient-list {
+    display: grid;
+    gap: 9px;
+}
+
+.familias-app-shell .familias-recipient-option {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 78px;
+    margin: 0;
+    padding: 12px 13px;
+    grid-template-columns: 43px minmax(0, 1fr) 25px;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid #d5e2de;
+    border-radius: 16px;
+    color: var(--familias-ink);
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.familias-app-shell .familias-recipient-option:hover {
+    border-color: #9cbdb4;
+    transform: translateY(-1px);
+}
+
+.familias-app-shell .familias-recipient-option:focus-within {
+    outline: 3px solid rgba(23, 98, 85, .13);
+    outline-offset: 2px;
+}
+
+.familias-app-shell .familias-recipient-option:has(input:checked),
+.familias-app-shell .familias-recipient-option.is-selected {
+    border-color: var(--familias-green-800);
+    background: #edf7f3;
+    box-shadow: 0 7px 20px rgba(23, 98, 85, .09);
+}
+
+.familias-app-shell .familias-recipient-option > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.familias-app-shell .familias-recipient-option__avatar {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    place-items: center;
+    border-radius: 14px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 15px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-recipient-option__copy {
+    display: grid;
+    min-width: 0;
+}
+
+.familias-app-shell .familias-recipient-option__copy strong,
+.familias-app-shell .familias-recipient-option__copy span,
+.familias-app-shell .familias-recipient-option__copy small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-recipient-option__copy strong {
+    font-size: 12px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-recipient-option__copy span {
+    margin-top: 2px;
+    color: #49645e;
+    font-size: 11px;
+}
+
+.familias-app-shell .familias-recipient-option__copy small {
+    margin-top: 2px;
+    color: var(--familias-muted);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.familias-app-shell .familias-recipient-option__check {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    border: 1px solid #bfd0cb;
+    border-radius: 999px;
+    color: transparent;
+    background: #fff;
+    font-size: 9px;
+}
+
+.familias-app-shell .familias-recipient-option input:checked ~
+    .familias-recipient-option__check {
+    border-color: var(--familias-green-800);
+    color: #fff;
+    background: var(--familias-green-800);
+}
+
+.familias-app-shell .familias-compose-fields {
+    min-width: 0;
+    padding: 25px;
+}
+
+.familias-app-shell .familias-compose-fields h2 {
+    margin-bottom: 20px;
+}
+
+.familias-app-shell .familias-compose-fields > label {
+    display: block;
+    margin: 0 0 7px;
+    color: var(--familias-ink);
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-compose-fields .form-control {
+    width: 100%;
+    margin: 0 0 17px;
+    border-color: #cbdad5;
+    border-radius: 13px;
+    background: #fbfdfc;
+    box-shadow: none;
+    font-size: 16px;
+}
+
+.familias-app-shell .familias-compose-fields input.form-control {
+    min-height: 49px;
+    padding: 12px 14px;
+}
+
+.familias-app-shell .familias-compose-fields textarea.form-control {
+    min-height: 190px;
+    padding: 13px 14px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.familias-app-shell .familias-compose-fields .form-control:focus {
+    border-color: var(--familias-green-800);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(23, 98, 85, .1);
+}
+
+.familias-app-shell .familias-compose-hint {
+    display: block;
+    margin-top: -8px;
+    color: var(--familias-muted);
+    font-size: 9px;
+}
+
+.familias-app-shell .familias-compose-actions {
+    display: flex;
+    padding: 15px 25px;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    border-top: 1px solid var(--familias-line);
+    background: #fff;
+}
+
+.familias-app-shell .familias-compose-actions .btn {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.familias-app-shell .familias-compose-error {
+    display: flex;
+    margin: 18px 18px 0;
+    padding: 12px 14px;
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: 9px;
+    border-radius: 12px;
+    color: #7d2348;
+    background: #fff0f6;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.familias-app-shell .btn {
+    min-height: 42px;
+    padding: 9px 15px;
+    border-radius: 11px;
+    font-weight: 750;
+    line-height: 20px;
+    white-space: normal;
+    touch-action: manipulation;
+    transition: 140ms ease;
+}
+
+.familias-app-shell .btn-sm {
+    min-height: 36px;
+    padding: 7px 12px;
+    border-radius: 9px;
+}
+
+.familias-app-shell .btn-primary,
+.familias-app-shell .btn-success {
+    border-color: var(--familias-green-800);
+    background: var(--familias-green-800);
+    box-shadow: 0 8px 18px rgba(23, 98, 85, .16);
+}
+
+.familias-app-shell .btn-primary:hover,
+.familias-app-shell .btn-primary:focus,
+.familias-app-shell .btn-success:hover,
+.familias-app-shell .btn-success:focus {
+    border-color: var(--familias-green-950);
+    background: var(--familias-green-950);
+}
+
+.familias-app-shell .btn-default {
+    border-color: var(--familias-line);
+    color: var(--familias-ink);
+    background: #fff;
+}
+
+.familias-app-shell .form-control,
+.familias-app-shell select,
+.familias-app-shell textarea,
+.familias-app-shell input[type="text"],
+.familias-app-shell input[type="email"],
+.familias-app-shell input[type="password"],
+.familias-app-shell input[type="date"] {
+    min-height: 46px;
+    padding: 10px 13px;
+    border: 1px solid #cbdad5;
+    border-radius: 11px;
+    color: var(--familias-ink);
+    background: #fbfdfc;
+    font-size: 16px;
+    box-shadow: none;
+}
+
+.familias-app-shell textarea.form-control {
+    min-height: 130px;
+}
+
+.familias-app-shell .form-control:focus {
+    border-color: var(--familias-green-800);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(23, 98, 85, .1);
+}
+
+.familias-app-shell .alert {
+    border: 0;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.familias-app-shell .table-responsive,
+.familias-app-shell .familias-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 14px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.familias-app-shell table.table {
+    width: 100% !important;
+    min-width: 680px;
+    margin: 0;
+    color: var(--familias-ink);
+    background: #fff;
+    font-size: 13px;
+}
+
+.familias-app-shell table.tabla_datos {
+    width: 100% !important;
+    min-width: 620px;
+    border-collapse: collapse;
+    color: var(--familias-ink);
+    background: #fff;
+    font-size: 13px;
+}
+
+.familias-app-shell table.tabla_datos td,
+.familias-app-shell table.tabla_datos th {
+    padding: 12px 14px;
+    border: 1px solid var(--familias-line);
+}
+
+.familias-app-shell .table > thead > tr > th,
+.familias-app-shell .table > tbody > tr > th,
+.familias-app-shell .table > tfoot > tr > th,
+.familias-app-shell .table > thead > tr > td,
+.familias-app-shell .table > tbody > tr > td,
+.familias-app-shell .table > tfoot > tr > td {
+    padding: 13px 14px;
+    border-color: var(--familias-line);
+    vertical-align: middle;
+}
+
+.familias-app-shell .table > thead > tr > th,
+.familias-app-shell .table > tbody > tr:first-child > td > b {
+    color: var(--familias-green-950);
+}
+
+.familias-app-shell .table-hover > tbody > tr:hover {
+    background: var(--familias-green-50);
+}
+
+/* Portada */
+.familias-app-shell .familias-home-hero {
+    display: flex;
+    min-height: 215px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding: clamp(27px, 4vw, 48px);
+    overflow: hidden;
+    border-radius: 26px;
+    color: #fff;
+    background:
+        radial-gradient(circle at 90% 18%, rgba(255, 255, 255, .14) 0 90px, transparent 91px),
+        radial-gradient(circle at 68% 140%, rgba(246, 184, 62, .17) 0 150px, transparent 151px),
+        linear-gradient(140deg, var(--familias-green-950), var(--familias-green-700));
+    box-shadow: 0 20px 50px rgba(16, 63, 55, .16);
+}
+
+.familias-app-shell .familias-home-hero__copy {
+    position: relative;
+    z-index: 1;
+    max-width: 730px;
+}
+
+.familias-app-shell .familias-home-hero__eyebrow {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffd3e6;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .familias-home-hero h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 850;
+    line-height: 1.04;
+    letter-spacing: -.055em;
+}
+
+.familias-app-shell .familias-home-hero p {
+    max-width: 600px;
+    margin: 15px 0 0;
+    color: rgba(255, 255, 255, .73);
+    font-size: 14px;
+}
+
+.familias-app-shell .familias-home-hero__avatar {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
+    margin-left: 30px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 26px;
+    color: #fff;
+    background: rgba(255, 255, 255, .11);
+    font-size: 32px;
+    font-weight: 850;
+    box-shadow: inset 0 0 0 8px rgba(255, 255, 255, .035);
+}
+
+.familias-app-shell .familias-home__content {
+    display: block;
+}
+
+.familias-app-shell .familias-quick-grid {
+    display: grid;
+    margin-bottom: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.familias-app-shell .familias-quick-card {
+    position: relative;
+    display: grid;
+    min-height: 148px;
+    padding: 19px;
+    grid-template-columns: 46px 1fr;
+    align-content: start;
+    gap: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(16, 63, 55, .08);
+    border-radius: 19px;
+    color: var(--familias-ink);
+    background: #fff;
+    box-shadow: 0 10px 32px rgba(16, 63, 55, .07);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.familias-app-shell .familias-quick-card:hover,
+.familias-app-shell .familias-quick-card:focus {
+    color: var(--familias-ink);
+    transform: translateY(-2px);
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .familias-quick-card__icon {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border-radius: 14px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 18px;
+}
+
+.familias-app-shell .familias-quick-card:nth-child(2) .familias-quick-card__icon {
+    color: #237aa1;
+    background: #e0f1f8;
+}
+
+.familias-app-shell .familias-quick-card:nth-child(3) .familias-quick-card__icon {
+    color: #a33068;
+    background: #fde7f1;
+}
+
+.familias-app-shell .familias-quick-card:nth-child(4) .familias-quick-card__icon {
+    color: #91681a;
+    background: #fff1d4;
+}
+
+.familias-app-shell .familias-quick-card__copy {
+    display: grid;
+    align-content: start;
+}
+
+.familias-app-shell .familias-quick-card strong {
+    font-size: 15px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-quick-card small {
+    margin-top: 4px;
+    color: var(--familias-muted);
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.familias-app-shell .familias-quick-card__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    place-items: center;
+    border-radius: 999px;
+    color: #fff;
+    background: var(--familias-pink);
+    font-size: 9px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-home .container > .row > .col-md-6 {
+    width: 100%;
+}
+
+.familias-app-shell .familias-home .legacy-home-greeting {
+    display: none;
+}
+
+.familias-app-shell .familias-home .tabla_datos {
+    width: 100% !important;
+    min-width: 0;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border: 1px solid var(--familias-line);
+    border-radius: 14px;
+    background: #fff;
+}
+
+.familias-app-shell .familias-home .tabla_celda_encabezado,
+.familias-app-shell .familias-home .tabla_celda_datos {
+    padding: 12px 14px;
+    border-color: var(--familias-line);
+}
+
+.familias-app-shell .familias-home .box > .box-body > h4 {
+    margin: 0;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--familias-line);
+    color: var(--familias-ink);
+    font-size: 17px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-home .box table.table {
+    min-width: 0;
+}
+
+.familias-app-shell .familias-day-nav {
+    display: flex;
+    margin: 18px 0 0;
+    justify-content: center;
+    gap: 9px;
+}
+
+.familias-app-shell .familias-day-nav a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 9px 14px;
+    border: 1px solid var(--familias-line);
+    border-radius: 12px;
+    background: #fff;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+/* Calendario */
+.familias-app-shell #calendar {
+    padding: 18px;
+}
+
+.familias-app-shell .fc-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.familias-app-shell .fc-toolbar h2 {
+    color: var(--familias-ink);
+    font-size: 20px;
+    font-weight: 850;
+}
+
+.familias-app-shell .fc button {
+    min-height: 38px;
+    border-radius: 9px;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.familias-app-shell .fc-event {
+    border: 0;
+    border-radius: 6px;
+    background: var(--familias-green-800);
+}
+
+/* Agenda familiar */
+.familias-app-shell .familias-agenda-page > .content-header,
+.familias-app-shell .familias-agenda-page > .content {
+    max-width: 1320px;
+}
+
+.familias-app-shell .familias-section-eyebrow {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--familias-pink);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .familias-agenda-card {
+    overflow: hidden;
+    border: 1px solid rgba(16, 63, 55, .09);
+    border-radius: 23px;
+    background: #fff;
+    box-shadow: var(--familias-shadow);
+}
+
+.familias-app-shell .familias-agenda-desktop {
+    padding: 8px;
+}
+
+.familias-app-shell .familias-agenda-mobile {
+    display: none;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-toolbar {
+    padding: 4px 3px 15px;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-toolbar h2 {
+    text-transform: capitalize;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-button {
+    border-color: #d1ded9;
+    color: var(--familias-ink);
+    background: #fff;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-button.fc-state-active,
+.familias-app-shell .familias-agenda-desktop .fc-button:focus {
+    color: #fff;
+    border-color: var(--familias-green-800);
+    background: var(--familias-green-800);
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-widget-header {
+    padding: 8px 4px;
+    color: #36554e;
+    border-color: var(--familias-line);
+    background: #f2f7f5;
+    font-size: 11px;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-widget-content {
+    border-color: var(--familias-line);
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-day-number {
+    padding: 7px;
+    color: #61756f;
+}
+
+.familias-app-shell .familias-agenda-desktop .fc-event {
+    margin: 2px 4px;
+    padding: 3px 5px;
+    border-radius: 7px;
+    font-size: 9px;
+}
+
+.familias-app-shell .familias-agenda-mobile__toolbar {
+    display: grid;
+    padding: 15px;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--familias-line);
+    background: #fff;
+}
+
+.familias-app-shell .familias-agenda-mobile__toolbar > button {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #d3e0dc;
+    border-radius: 13px;
+    color: var(--familias-green-800);
+    background: #f8fbfa;
+}
+
+.familias-app-shell .familias-agenda-mobile__toolbar >
+    .familias-agenda-mobile__today {
+    width: auto;
+    height: 36px;
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 10px;
+    font-weight: 850;
+}
+
+.familias-app-shell .familias-agenda-mobile__period {
+    display: grid;
+    min-width: 0;
+    text-align: center;
+}
+
+.familias-app-shell .familias-agenda-mobile__period small {
+    color: var(--familias-muted);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.familias-app-shell .familias-agenda-mobile__period strong {
+    margin-top: 2px;
+    overflow: hidden;
+    color: var(--familias-ink);
+    font-size: 18px;
+    font-weight: 850;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-agenda-mobile__days {
+    display: grid;
+    padding: 14px;
+    gap: 11px;
+    background: #f3f8f6;
+}
+
+.familias-app-shell .familias-agenda-day {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 75px minmax(0, 1fr);
+    border: 1px solid rgba(16, 63, 55, .08);
+    border-radius: 17px;
+    background: #fff;
+    box-shadow: 0 8px 23px rgba(16, 63, 55, .055);
+}
+
+.familias-app-shell .familias-agenda-day__date {
+    display: grid;
+    padding: 14px 9px;
+    align-content: start;
+    justify-items: center;
+    border-right: 1px solid var(--familias-line);
+    background: #f9fbfa;
+    text-align: center;
+}
+
+.familias-app-shell .familias-agenda-day__date > span:first-child {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 13px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.familias-app-shell .familias-agenda-day__date > span:last-child {
+    display: grid;
+    margin-top: 8px;
+}
+
+.familias-app-shell .familias-agenda-day__date strong {
+    overflow: hidden;
+    max-width: 58px;
+    color: var(--familias-ink);
+    font-size: 9px;
+    font-weight: 850;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.familias-app-shell .familias-agenda-day__date small {
+    margin-top: 2px;
+    color: var(--familias-muted);
+    font-size: 7px;
+}
+
+.familias-app-shell .familias-agenda-day.is-today {
+    border-color: rgba(23, 98, 85, .35);
+    box-shadow: 0 9px 25px rgba(23, 98, 85, .1);
+}
+
+.familias-app-shell .familias-agenda-day.is-today
+    .familias-agenda-day__date > span:first-child {
+    color: #fff;
+    background: var(--familias-green-800);
+}
+
+.familias-app-shell .familias-agenda-day__events {
+    display: grid;
+    min-width: 0;
+    align-content: start;
+}
+
+.familias-app-shell .familias-agenda-event {
+    display: grid;
+    min-width: 0;
+    min-height: 66px;
+    padding: 11px 12px 11px 10px;
+    grid-template-columns: 4px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    color: var(--familias-ink);
+    border-bottom: 1px solid var(--familias-line);
+    background: #fff;
+}
+
+.familias-app-shell .familias-agenda-event:last-child {
+    border-bottom: 0;
+}
+
+.familias-app-shell .familias-agenda-event[href] {
+    grid-template-columns: 4px minmax(0, 1fr) 12px;
+}
+
+.familias-app-shell .familias-agenda-event:hover,
+.familias-app-shell .familias-agenda-event:focus {
+    color: var(--familias-ink);
+    background: #f9fcfb;
+}
+
+.familias-app-shell .familias-agenda-event__marker {
+    width: 4px;
+    height: 34px;
+    border-radius: 99px;
+}
+
+.familias-app-shell .familias-agenda-event__copy {
+    display: grid;
+    min-width: 0;
+}
+
+.familias-app-shell .familias-agenda-event__copy small {
+    color: var(--familias-muted);
+    font-size: 8px;
+    font-weight: 750;
+}
+
+.familias-app-shell .familias-agenda-event__copy strong {
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.familias-app-shell .familias-agenda-event > .fa-chevron-right {
+    color: #9aaca7;
+    font-size: 9px;
+}
+
+.familias-app-shell .familias-agenda-mobile__loading,
+.familias-app-shell .familias-agenda-mobile__empty {
+    min-height: 260px;
+    padding: 35px 20px;
+    color: var(--familias-muted);
+    background: #f3f8f6;
+    text-align: center;
+}
+
+.familias-app-shell .familias-agenda-mobile__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-size: 11px;
+}
+
+.familias-app-shell .familias-agenda-mobile__empty {
+    place-items: center;
+    align-content: center;
+}
+
+.familias-app-shell .familias-agenda-mobile__empty:not([hidden]) {
+    display: grid;
+}
+
+.familias-app-shell .familias-agenda-mobile__empty > span {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border-radius: 18px;
+    color: var(--familias-green-800);
+    background: var(--familias-green-100);
+    font-size: 23px;
+}
+
+.familias-app-shell .familias-agenda-mobile__empty strong {
+    margin-top: 12px;
+    color: var(--familias-ink);
+    font-size: 14px;
+}
+
+.familias-app-shell .familias-agenda-mobile__empty p {
+    max-width: 270px;
+    margin: 5px 0 0;
+    font-size: 10px;
+}
+
+/* Navegación inferior de móvil */
+.familias-app-shell .familias-bottom-nav {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .familias-app-shell.sidebar-collapse .main-header .logo {
+        width: 64px;
+        padding: 0 10px;
+    }
+
+    .familias-app-shell.sidebar-collapse .main-header .logo .logo-lg {
+        display: none;
+    }
+
+    .familias-app-shell.sidebar-collapse .main-header .logo .logo-mini {
+        display: flex;
+    }
+
+    .familias-app-shell.sidebar-collapse .familias-brand img {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .familias-app-shell.sidebar-collapse .main-header .navbar {
+        margin-left: 64px;
+    }
+
+    .familias-app-shell.sidebar-collapse .main-sidebar {
+        transform: translateX(calc(-1 * var(--familias-sidebar)));
+    }
+
+    .familias-app-shell.sidebar-collapse .content-wrapper {
+        margin-left: 0 !important;
+    }
+
+    .familias-app-shell.sidebar-collapse .main-footer {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1100px) {
+    .familias-app-shell .familias-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --familias-header: 66px;
+    }
+
+    body.familias-app-shell {
+        background: #f3f8f6;
+    }
+
+    .familias-app-shell .main-header {
+        height: var(--familias-header);
+    }
+
+    .familias-app-shell .main-header .logo {
+        position: absolute;
+        z-index: 1002;
+        top: 0;
+        left: 54px;
+        width: 142px;
+        height: var(--familias-header);
+        padding: 0 5px;
+        background: transparent !important;
+    }
+
+    .familias-app-shell .main-header .logo .logo-lg {
+        display: flex;
+    }
+
+    .familias-app-shell .familias-brand {
+        gap: 8px;
+    }
+
+    .familias-app-shell .familias-brand img {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+
+    .familias-app-shell .familias-brand__copy strong {
+        font-size: 16px;
+    }
+
+    .familias-app-shell .familias-brand__copy small {
+        display: none;
+    }
+
+    .familias-app-shell .main-header .navbar {
+        height: var(--familias-header);
+        min-height: var(--familias-header);
+        margin-left: 0;
+    }
+
+    .familias-app-shell .main-header .sidebar-toggle {
+        width: 54px;
+        height: var(--familias-header);
+    }
+
+    .familias-app-shell .navbar-custom-menu > .navbar-nav {
+        margin-right: 5px;
+    }
+
+    .familias-app-shell .navbar-custom-menu > .navbar-nav > li > a:not(.familias-logout) {
+        min-width: 42px;
+        min-height: 44px;
+        margin: 0;
+        padding: 0 9px;
+        border-radius: 11px;
+    }
+
+    .familias-app-shell .navbar-nav > .user-menu {
+        display: none;
+    }
+
+    .familias-app-shell .main-header .navbar .familias-logout {
+        display: grid !important;
+        width: 42px;
+        min-width: 42px;
+        min-height: 44px;
+        margin: 0 2px;
+        padding: 0 !important;
+        place-items: center;
+        border-radius: 11px;
+    }
+
+    .familias-app-shell .familias-logout__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .familias-app-shell .main-sidebar {
+        width: min(84vw, 310px);
+        padding-top: var(--familias-header);
+        transform: translateX(-105%);
+        box-shadow: 18px 0 50px rgba(8, 39, 34, .28);
+    }
+
+    .familias-app-shell.sidebar-open .main-sidebar {
+        transform: translateX(0);
+    }
+
+    .familias-app-shell.sidebar-open .content-wrapper,
+    .familias-app-shell.sidebar-open .main-footer {
+        transform: none;
+    }
+
+    .familias-app-shell .content-wrapper {
+        width: 100%;
+        min-height: 100vh !important;
+        margin-left: 0 !important;
+        padding: calc(var(--familias-header) + 20px) 14px calc(92px + env(safe-area-inset-bottom));
+    }
+
+    .familias-app-shell .main-footer {
+        display: none;
+        margin-left: 0;
+    }
+
+    .familias-app-shell .content-header {
+        min-height: 0;
+        padding-bottom: 18px;
+    }
+
+    .familias-app-shell .content-header h1 {
+        font-size: 29px;
+        line-height: 1.08;
+    }
+
+    .familias-app-shell .content-header h1 small {
+        font-size: 13px;
+    }
+
+    .familias-app-shell .content-header .breadcrumb {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .familias-app-shell .box,
+    .familias-app-shell .panel,
+    .familias-app-shell .well {
+        border-radius: 17px;
+    }
+
+    .familias-app-shell .box-header {
+        padding: 16px;
+    }
+
+    .familias-app-shell .box-body {
+        padding: 16px;
+    }
+
+    .familias-app-shell .box-body.no-padding {
+        padding: 0;
+    }
+
+    .familias-app-shell .box-footer {
+        padding: 14px 16px;
+    }
+
+    .familias-app-shell .form-inline .form-group {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .familias-app-shell .form-inline .form-control {
+        width: 100%;
+    }
+
+    .familias-app-shell .form-inline .btn {
+        width: 100%;
+        margin: 4px 0 0;
+    }
+
+    .familias-app-shell .familias-messages .box-body.no-padding {
+        padding: 12px;
+    }
+
+    .familias-app-shell .familias-messages .panel-heading {
+        padding: 13px 14px;
+    }
+
+    .familias-app-shell .familias-messages .panel-body {
+        padding: 14px;
+    }
+
+    .familias-app-shell .familias-message-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .familias-app-shell .familias-message-open {
+        display: flex;
+        width: 100%;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+    }
+
+    .familias-app-shell .familias-chat-page > .content-header {
+        padding-bottom: 14px;
+    }
+
+    .familias-app-shell .familias-chat-page > .content-header h1 {
+        font-size: 25px;
+    }
+
+    .familias-app-shell .familias-chat-card {
+        margin-right: -2px;
+        margin-left: -2px;
+        border-radius: 19px;
+    }
+
+    .familias-app-shell .familias-chat-card__header {
+        min-height: 72px;
+        padding: 12px;
+    }
+
+    .familias-app-shell .familias-chat-avatar {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+        border-radius: 13px;
+    }
+
+    .familias-app-shell .familias-chat-status {
+        display: none;
+    }
+
+    .familias-app-shell .familias-chat-thread {
+        min-height: 360px;
+        padding: 17px 12px;
+        padding-bottom: 85px;
+        gap: 9px;
+    }
+
+    .familias-app-shell .familias-chat-bubble {
+        max-width: 88%;
+        padding: 10px 11px 7px;
+    }
+
+    .familias-app-shell .familias-chat-bubble__text {
+        font-size: 13px;
+    }
+
+    .familias-app-shell .familias-chat-medication {
+        grid-template-columns: 1fr;
+    }
+
+    .familias-app-shell .familias-chat-composer {
+        position: sticky;
+        z-index: 2;
+        bottom: calc(77px + env(safe-area-inset-bottom));
+        padding: 9px;
+        grid-template-columns: minmax(0, 1fr) 48px;
+        gap: 7px;
+    }
+
+    .familias-app-shell .familias-chat-composer textarea,
+    .familias-app-shell .familias-chat-composer > button {
+        min-height: 48px;
+        height: 48px;
+    }
+
+    .familias-app-shell .familias-chat-composer textarea {
+        overflow-y: hidden;
+    }
+
+    .familias-app-shell .familias-chat-composer > button {
+        width: 48px;
+        border-radius: 15px;
+    }
+
+    .familias-app-shell .familias-chat-card__footer {
+        padding: 10px;
+    }
+
+    .familias-app-shell .familias-compose-page > .content-header {
+        padding-bottom: 14px;
+    }
+
+    .familias-app-shell .familias-compose-page > .content-header h1 {
+        font-size: 27px;
+    }
+
+    .familias-app-shell .familias-compose-card {
+        margin-right: -2px;
+        margin-left: -2px;
+        grid-template-columns: minmax(0, 1fr);
+        border-radius: 19px;
+    }
+
+    .familias-app-shell .familias-recipient-picker {
+        padding: 19px 14px;
+        border-right: 0;
+        border-bottom: 1px solid var(--familias-line);
+    }
+
+    .familias-app-shell .familias-recipient-picker legend,
+    .familias-app-shell .familias-compose-fields h2 {
+        font-size: 15px;
+    }
+
+    .familias-app-shell .familias-compose-help {
+        margin-left: 39px;
+    }
+
+    .familias-app-shell .familias-recipient-option {
+        min-height: 82px;
+        padding: 12px;
+        grid-template-columns: 42px minmax(0, 1fr) 24px;
+        gap: 10px;
+    }
+
+    .familias-app-shell .familias-recipient-option__copy strong {
+        font-size: 12px;
+    }
+
+    .familias-app-shell .familias-recipient-option__copy span {
+        font-size: 10px;
+    }
+
+    .familias-app-shell .familias-compose-fields {
+        padding: 20px 14px;
+    }
+
+    .familias-app-shell .familias-compose-fields textarea.form-control {
+        min-height: 170px;
+    }
+
+    .familias-app-shell .familias-compose-actions {
+        position: sticky;
+        z-index: 3;
+        bottom: calc(77px + env(safe-area-inset-bottom));
+        display: grid;
+        padding: 10px 14px;
+        grid-column: 1;
+        grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+        box-shadow: 0 -8px 25px rgba(16, 63, 55, .06);
+    }
+
+    .familias-app-shell .familias-compose-actions .btn {
+        min-width: 0;
+        flex: 1;
+        padding-right: 10px;
+        padding-left: 10px;
+        white-space: nowrap;
+    }
+
+    .familias-app-shell .familias-compose-error {
+        margin: 12px 12px 0;
+        grid-column: 1;
+    }
+
+    .familias-app-shell .familias-agenda-page > .content-header h1 {
+        font-size: 29px;
+    }
+
+    .familias-app-shell .familias-agenda-page > .content-header h1 small {
+        max-width: 320px;
+        margin-top: 7px;
+        line-height: 1.45;
+    }
+
+    .familias-app-shell .familias-agenda-card {
+        margin-right: -2px;
+        margin-left: -2px;
+        border-radius: 19px;
+        box-shadow: 0 10px 32px rgba(16, 63, 55, .07);
+    }
+
+    .familias-app-shell .familias-agenda-desktop {
+        display: none;
+    }
+
+    .familias-app-shell .familias-agenda-mobile {
+        display: block;
+    }
+
+    .familias-app-shell .familias-home-hero {
+        min-height: 205px;
+        margin: -4px 0 16px;
+        padding: 27px 22px;
+        border-radius: 23px;
+    }
+
+    .familias-app-shell .familias-home-hero h1 {
+        max-width: 300px;
+        font-size: 34px;
+    }
+
+    .familias-app-shell .familias-home-hero p {
+        max-width: 290px;
+        font-size: 12px;
+    }
+
+    .familias-app-shell .familias-home-hero__avatar {
+        display: none;
+    }
+
+    .familias-app-shell .familias-quick-grid {
+        margin-bottom: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .familias-app-shell .familias-quick-card {
+        min-height: 138px;
+        padding: 15px;
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+        border-radius: 16px;
+    }
+
+    .familias-app-shell .familias-quick-card__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    .familias-app-shell .familias-quick-card strong {
+        font-size: 13px;
+    }
+
+    .familias-app-shell .familias-quick-card small {
+        font-size: 10px;
+    }
+
+    .familias-app-shell .familias-home .box > .box-body > h4 {
+        padding: 16px;
+        font-size: 15px;
+    }
+
+    .familias-app-shell .familias-day-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .familias-app-shell .familias-day-nav a {
+        justify-content: center;
+    }
+
+    .familias-app-shell #calendar {
+        padding: 12px;
+    }
+
+    .familias-app-shell .fc-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .familias-app-shell .fc-toolbar .fc-left,
+    .familias-app-shell .fc-toolbar .fc-right {
+        float: none;
+    }
+
+    .familias-app-shell .fc-toolbar .fc-center {
+        width: 100%;
+        order: -1;
+        text-align: left;
+    }
+
+    .familias-app-shell .fc-toolbar h2 {
+        font-size: 17px;
+    }
+
+    .familias-app-shell .familias-bottom-nav {
+        position: fixed;
+        z-index: 1060;
+        right: 10px;
+        bottom: calc(9px + env(safe-area-inset-bottom));
+        left: 10px;
+        display: grid;
+        min-height: 66px;
+        padding: 7px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border: 1px solid rgba(16, 63, 55, .1);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, .96);
+        box-shadow: 0 15px 45px rgba(16, 63, 55, .2);
+        backdrop-filter: blur(14px);
+    }
+
+    .familias-app-shell .familias-bottom-nav a,
+    .familias-app-shell .familias-bottom-nav button {
+        position: relative;
+        display: grid;
+        min-width: 0;
+        min-height: 52px;
+        padding: 5px 2px;
+        place-items: center;
+        gap: 1px;
+        border: 0;
+        border-radius: 14px;
+        color: #71847f;
+        background: transparent;
+        font: inherit;
+        font-size: 9px;
+        font-weight: 750;
+        line-height: 1.1;
+        cursor: pointer;
+    }
+
+    .familias-app-shell .familias-bottom-nav .fa {
+        font-size: 18px;
+    }
+
+    .familias-app-shell .familias-bottom-nav a.active,
+    .familias-app-shell .familias-bottom-nav a:focus,
+    .familias-app-shell .familias-bottom-nav button:focus {
+        color: var(--familias-green-800);
+        background: var(--familias-green-100);
+        outline: none;
+    }
+
+    .familias-app-shell .familias-bottom-nav__badge {
+        position: absolute;
+        top: 3px;
+        left: calc(50% + 5px);
+        display: grid;
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        place-items: center;
+        border: 2px solid #fff;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--familias-pink);
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 410px) {
+    .familias-app-shell .main-header .logo {
+        width: 126px;
+    }
+
+    .familias-app-shell .familias-brand__copy strong {
+        font-size: 14px;
+    }
+
+    .familias-app-shell .familias-brand img {
+        width: 35px;
+        height: 35px;
+        flex-basis: 35px;
+    }
+
+    .familias-app-shell .navbar-custom-menu > .navbar-nav > li > a:not(.familias-logout),
+    .familias-app-shell .main-header .navbar .familias-logout {
+        width: 39px;
+        min-width: 39px;
+        padding: 0 7px;
+    }
+
+    .familias-app-shell .familias-home-hero h1 {
+        font-size: 31px;
+    }
+
+    .familias-app-shell .familias-quick-card {
+        min-height: 130px;
+        padding: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .familias-app-shell *,
+    .familias-app-shell *::before,
+    .familias-app-shell *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

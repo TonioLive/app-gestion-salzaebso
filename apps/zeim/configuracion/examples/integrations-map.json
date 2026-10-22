@@ -1,0 +1,414 @@
+{
+  "uses": [
+    {
+      "variable": "ZEIM_BLOG_USER_01",
+      "path": "configuracion/config.php",
+      "line": 369
+    },
+    {
+      "variable": "ZEIM_BLOG_PASSWORD_01",
+      "path": "configuracion/config.php",
+      "line": 370
+    },
+    {
+      "variable": "ZEIM_BLOG_USER_01",
+      "path": "configuracion/configuracion/config.php",
+      "line": 361
+    },
+    {
+      "variable": "ZEIM_BLOG_PASSWORD_01",
+      "path": "configuracion/configuracion/config.php",
+      "line": 362
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_01",
+      "path": "gestion/centros/ver_camara.php",
+      "line": 206
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_01",
+      "path": "gestion/centros/ver_camara.php",
+      "line": 207
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "gestion/contacto/envios/enviar_email_todos1.php",
+      "line": 133
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "gestion/contacto/envios/enviar_email_todos1.php",
+      "line": 134
+    },
+    {
+      "variable": "ZEIM_SMS_USER_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos.php",
+      "line": 15
+    },
+    {
+      "variable": "ZEIM_SMS_PASSWORD_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos.php",
+      "line": 16
+    },
+    {
+      "variable": "ZEIM_SMS_USER_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos1.php",
+      "line": 40
+    },
+    {
+      "variable": "ZEIM_SMS_PASSWORD_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos1.php",
+      "line": 41
+    },
+    {
+      "variable": "ZEIM_SMS_USER_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos1.php",
+      "line": 63
+    },
+    {
+      "variable": "ZEIM_SMS_PASSWORD_01",
+      "path": "gestion/contacto/envios/enviar_sms_todos1.php",
+      "line": 64
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 152
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 153
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 304
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 305
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_02",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 431
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_02",
+      "path": "herramientas/enviar_mensaje_todos.php",
+      "line": 432
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "herramientas/enviar_prueba.php",
+      "line": 69
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "herramientas/enviar_prueba.php",
+      "line": 70
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_03",
+      "path": "herramientas/mailer/ejecutar_envio_programado_man.php",
+      "line": 135
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_03",
+      "path": "herramientas/mailer/ejecutar_envio_programado_man.php",
+      "line": 136
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_04",
+      "path": "mailer/enviar_codigo.php",
+      "line": 67
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_04",
+      "path": "mailer/enviar_codigo.php",
+      "line": 68
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_04",
+      "path": "mailer/enviar_codigo_evaluacion.php",
+      "line": 113
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_04",
+      "path": "mailer/enviar_codigo_evaluacion.php",
+      "line": 114
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "mailing/enviar_mensaje_password.php",
+      "line": 46
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "mailing/enviar_mensaje_password.php",
+      "line": 47
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "mailing/enviar_mensaje_password_unico.php",
+      "line": 99
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "mailing/enviar_mensaje_password_unico.php",
+      "line": 100
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 156
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 157
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 311
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 312
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_05",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 324
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_02",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 450
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_02",
+      "path": "mailing/enviar_mensaje_todos.php",
+      "line": 451
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_01",
+      "path": "mailing/enviar_prueba.php",
+      "line": 73
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_01",
+      "path": "mailing/enviar_prueba.php",
+      "line": 74
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_05",
+      "path": "mailing/enviar_prueba.php",
+      "line": 83
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_05",
+      "path": "mailing/enviar_prueba.php",
+      "line": 84
+    },
+    {
+      "variable": "ZEIM_SMTP_USER_02",
+      "path": "mailing/probar_correo.php",
+      "line": 56
+    },
+    {
+      "variable": "ZEIM_SMTP_PASSWORD_02",
+      "path": "mailing/probar_correo.php",
+      "line": 57
+    },
+    {
+      "variable": "ZEIM_CERT_PASSWORD_01",
+      "path": "pdf2/facturacion/factura.php",
+      "line": 203
+    },
+    {
+      "variable": "ZEIM_CERT_PASSWORD_01",
+      "path": "pdf2/facturacion/factura_alumno.php",
+      "line": 316
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_02",
+      "path": "webcam/firefox.php",
+      "line": 3
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_02",
+      "path": "webcam/firefox.php",
+      "line": 4
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_02",
+      "path": "webcam/firefoxlocal.php",
+      "line": 3
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_02",
+      "path": "webcam/firefoxlocal.php",
+      "line": 4
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_01",
+      "path": "webcam/principal.php",
+      "line": 293
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_01",
+      "path": "webcam/principal.php",
+      "line": 294
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_03",
+      "path": "webcam/sant_pau.php",
+      "line": 4
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_03",
+      "path": "webcam/sant_pau.php",
+      "line": 5
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_04",
+      "path": "webcam/sant_pau.php",
+      "line": 365
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_04",
+      "path": "webcam/sant_pau.php",
+      "line": 366
+    },
+    {
+      "variable": "ZEIM_CAMERA_USER_01",
+      "path": "webcam/ver_camara.php",
+      "line": 297
+    },
+    {
+      "variable": "ZEIM_CAMERA_PASSWORD_01",
+      "path": "webcam/ver_camara.php",
+      "line": 298
+    },
+    {
+      "variable": "ZEIM_SIGNING_CERTIFICATE",
+      "path": "pdf2/facturacion/factura.php",
+      "line": 195
+    },
+    {
+      "variable": "ZEIM_SIGNING_PRIVATE_KEY",
+      "path": "pdf2/facturacion/factura.php",
+      "line": 196
+    },
+    {
+      "variable": "ZEIM_SIGNING_CERTIFICATE",
+      "path": "pdf2/facturacion/factura.php",
+      "line": 201
+    },
+    {
+      "variable": "ZEIM_SIGNING_PRIVATE_KEY",
+      "path": "pdf2/facturacion/factura.php",
+      "line": 202
+    },
+    {
+      "variable": "ZEIM_SIGNING_CERTIFICATE",
+      "path": "pdf2/facturacion/factura_alumno.php",
+      "line": 308
+    },
+    {
+      "variable": "ZEIM_SIGNING_PRIVATE_KEY",
+      "path": "pdf2/facturacion/factura_alumno.php",
+      "line": 309
+    },
+    {
+      "variable": "ZEIM_SIGNING_CERTIFICATE",
+      "path": "pdf2/facturacion/factura_alumno.php",
+      "line": 314
+    },
+    {
+      "variable": "ZEIM_SIGNING_PRIVATE_KEY",
+      "path": "pdf2/facturacion/factura_alumno.php",
+      "line": 315
+    },
+    {
+      "variable": "ZEIM_BANK_CHECK_DIGITS_01",
+      "path": "facturacion/csb19.php",
+      "line": 43
+    },
+    {
+      "variable": "ZEIM_BANK_ACCOUNT_01",
+      "path": "facturacion/csb19.php",
+      "line": 44
+    },
+    {
+      "variable": "ZEIM_BANK_CHECK_DIGITS_02",
+      "path": "facturacion/csb19c.php",
+      "line": 43
+    },
+    {
+      "variable": "ZEIM_BANK_ACCOUNT_02",
+      "path": "facturacion/csb19c.php",
+      "line": 44
+    },
+    {
+      "variable": "ZEIM_BANK_CHECK_DIGITS_03",
+      "path": "facturacion/csb19g.php",
+      "line": 43
+    },
+    {
+      "variable": "ZEIM_BANK_ACCOUNT_03",
+      "path": "facturacion/csb19g.php",
+      "line": 44
+    },
+    {
+      "variable": "ZEIM_BANK_CHECK_DIGITS_04",
+      "path": "facturacion/csb19h.php",
+      "line": 43
+    },
+    {
+      "variable": "ZEIM_BANK_ACCOUNT_04",
+      "path": "facturacion/csb19h.php",
+      "line": 44
+    },
+    {
+      "variable": "ZEIM_BANK_IBAN_01",
+      "path": "facturacion/csb19santander_sepa.php",
+      "line": 14
+    },
+    {
+      "variable": "ZEIM_BANK_IBAN_01",
+      "path": "facturacion/csb19santander_transfer_sepa.php",
+      "line": 20
+    },
+    {
+      "variable": "ZEIM_CAMERA_CODE_01",
+      "path": "webcam/principal.php",
+      "line": 295
+    },
+    {
+      "variable": "ZEIM_CAMERA_CODE_01",
+      "path": "webcam/ver_camara.php",
+      "line": 299
+    },
+    {
+      "variable": "ZEIM_CAMERA_CODE_01",
+      "path": "gestion/centros/ver_camara.php",
+      "line": 208
+    },
+    {
+      "variable": "ZEIM_CATERING_CERTIFICATE_SIGNER_TEXT",
+      "path": "pdf/informe_comedor_curso.php",
+      "line": 156
+    },
+    {
+      "variable": "ZEIM_CATERING_CERTIFICATE_SIGNER_TEXT",
+      "path": "pdf/informe_comedor_curso_todos.php",
+      "line": 184
+    }
+  ]
+}

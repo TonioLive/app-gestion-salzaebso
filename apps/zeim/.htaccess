@@ -1,0 +1,27 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+<FilesMatch "(?i)(^\.|\.(sql|bak|log|ini|env|phar|phps|orig|save)$|^composer\.(json|lock)$)">
+    Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "same-origin"
+</IfModule>
+
+<FilesMatch "(?i)(?:_OLD|_old|_20[0-9]{2}-[0-9]{2}-[0-9]{2}|\.bak)\.php$">
+ Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+ RewriteEngine On
+ RewriteRule (^|/)(vendor|node_modules|OLD[^/]*|old|test|examples)(/|$) - [F,L,NC]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+ RewriteRule ^(?:uploads|fotos_usuarios|dni_usuarios|firma_usuarios|fotos_padres|documentacion|documentos|gabinete)/.*\.(?:php[0-9]?|phtml|phar|shtml|cgi|pl|py|exe|dll)(?:[./]|$) - [F,L,NC]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+ RewriteRule ^(?:uploads|fotos_usuarios|dni_usuarios|firma_usuarios|fotos_padres|documentacion|documentos|gabinete|recibos|descargas|prl_neokids)/.+ archivo-protegido.php [END,QSD,NC]
+</IfModule>

@@ -1,0 +1,13 @@
+                  Class.graph is similar to Perl's package GIFgraph in a user's perspect, but has more features.
+                  Class.graph plots both 2D and 3D charts. It is suitable for dynamic data presentation on the
+                  web. It is pure PHP and requires GD library support in PHP.
+
+                  Version 2.x features
+
+                       PHP4 ready. Twice as fast when using PHP4. PNG support. 
+                       More cool features like shadow, background etc. 
+                       Removed 100 data points limitation 
+                       New class management scheme 
+                       Added stock charts in version 2.x 
+
+URL: http://www.vhconsultants.com/

@@ -1,0 +1,27 @@
+data {
+  SOCIABILIDAD =  16
+  LENGUAJE =  14
+  COORDINACIÓN = 15
+  CONTROL POSTURAL =  14
+}
+
+graph {
+  padding-left   = 40
+  padding-top    = 40
+  padding-right  = 20
+  padding-bottom = 20
+  border-width = 0
+  area-height = 350
+  area-width = 350
+  title = Niveles alcanzados
+  transparency = 00
+  title-font = 5
+}
+
+axis {
+  y-step = 10
+}
+
+scale {
+  y-round = 0
+}
